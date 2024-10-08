@@ -33,7 +33,7 @@ public class TipoEmpresaMapper {
         return new TipoEmpresa(
             dto.getId(),
             dto.getDescripcion()
-        )
+        );
     }
 
 }
