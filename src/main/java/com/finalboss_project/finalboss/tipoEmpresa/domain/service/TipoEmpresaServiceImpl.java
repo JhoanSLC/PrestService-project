@@ -28,7 +28,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
     private ITipoEmpresaRepository repository;
 
     @Override
-    public TipoEmpresaDto createTipoEmpresa(TipoEmpresaDto dto) {
+    public TipoEmpresaDto create(TipoEmpresaDto dto) {
         // Convierte el DTO a la entidad TipoEmpresa
         TipoEmpresa entidad = TipoEmpresaMapper.mapToTipoEmpresa(dto);
         // Guarda la entidad en la base de datos
@@ -38,7 +38,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
     }
 
     @Override
-    public TipoEmpresaDto getTipoEmpresaById(Long id) {
+    public TipoEmpresaDto getById(Long id) {
         // Busca la entidad por ID y lanza una excepción si no se encuentra
         TipoEmpresa entidad = repository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Tipo de empresa con id: " + id + " no encontrado"));
@@ -47,7 +47,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
     }
 
     @Override
-    public List<TipoEmpresaDto> getAllTiposEmpresas() {
+    public List<TipoEmpresaDto> getAll() {
         // Obtiene todas las entidades de TipoEmpresa
         List<TipoEmpresa> entidades = repository.findAll();
         // Convierte la lista de entidades a una lista de DTOs
@@ -57,7 +57,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
     }
 
     @Override
-    public TipoEmpresaDto updateTipoEmpresaDto(Long id, TipoEmpresaDto updatedDto) {
+    public TipoEmpresaDto update(Long id, TipoEmpresaDto updatedDto) {
         // Busca la entidad por ID y lanza una excepción si no se encuentra
         TipoEmpresa entidad = repository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Tipo de empresa con id: " + id + " no encontrado"));
@@ -72,7 +72,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
     }
 
     @Override
-    public void deleteTipoEmpresa(Long id) {
+    public void delete(Long id) {
         // Verifica si la entidad existe y lanza una excepción si no se encuentra
         repository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Tipo de empresa con id: " + id + " no encontrado"));

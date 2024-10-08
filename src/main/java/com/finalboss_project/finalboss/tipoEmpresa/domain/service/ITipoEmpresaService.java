@@ -12,10 +12,10 @@ import com.finalboss_project.finalboss.tipoEmpresa.dto.TipoEmpresaDto;
  */
 public interface ITipoEmpresaService {
 
-    TipoEmpresaDto createTipoEmpresa(TipoEmpresaDto dto);
-    TipoEmpresaDto getTipoEmpresaById(Long id);
-    List<TipoEmpresaDto> getAllTiposEmpresas();
-    TipoEmpresaDto updateTipoEmpresaDto(Long id, TipoEmpresaDto updatedDto);
-    void deleteTipoEmpresa(Long id);
+    TipoEmpresaDto create(TipoEmpresaDto dto);
+    TipoEmpresaDto getById(Long id);
+    List<TipoEmpresaDto> getAll();
+    TipoEmpresaDto update(Long id, TipoEmpresaDto updatedDto);
+    void delete(Long id);
 
 }
