@@ -30,4 +30,5 @@ public class TipoEmpresa {
 
     @Column(nullable = false)
     private String descripcion;
+
 }
