@@ -10,6 +10,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa la entidad TipoEmpresa en la base de datos.
+ * 
+ * Contiene los atributos id y descripcion, donde id es la clave 
+ * primaria autogenerada y descripcion es un campo obligatorio.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

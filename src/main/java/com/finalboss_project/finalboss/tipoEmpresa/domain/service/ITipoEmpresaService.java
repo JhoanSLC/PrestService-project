@@ -2,11 +2,14 @@ package com.finalboss_project.finalboss.tipoEmpresa.domain.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.finalboss_project.finalboss.tipoEmpresa.dto.TipoEmpresaDto;
 
-@Service
+/**
+ * Servicio para gestionar operaciones relacionadas con TipoEmpresa.
+ * 
+ * Define métodos para crear, obtener, actualizar y eliminar 
+ * instancias de TipoEmpresaDto.
+ */
 public interface ITipoEmpresaService {
 
     TipoEmpresaDto createTipoEmpresa(TipoEmpresaDto dto);
