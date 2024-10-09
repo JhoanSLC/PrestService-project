@@ -1,7 +1,7 @@
 package com.finalboss_project.finalboss.empresa.dto;
 
-import com.finalboss_project.finalboss.tipoEmpresa.dto.TipoEmpresaDto;
-
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,12 @@ import lombok.NoArgsConstructor;
 public class EmpresaDto {
 
     private Long id;
+
+    @NotNull(message = "El nombre no puede ser nulo")
+    @NotEmpty(message = "El nombre no puede estar vacío")
     private String nombre;
-    private TipoEmpresaDto tipoEmpresaDto;
+
+    @NotNull(message = "El Id del tipo de empresa no puede ser nulo")
+    private Long tipoEmpresaId;
 
 }

@@ -1,8 +1,8 @@
 package com.finalboss_project.finalboss.tipoEmpresa.domain.entity;
 
-import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
-
 import java.util.List;
+
+import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,7 +32,6 @@ public class TipoEmpresa {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)

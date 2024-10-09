@@ -29,7 +29,7 @@ public class Region {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "paisId")
+    @JoinColumn(name = "paisId",nullable = false)
     private Pais pais;
 
 }

@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.finalboss_project.finalboss.customExceptions.ResourceNotFoundException;
-import com.finalboss_project.finalboss.pais.mapper.PaisMapper;
+import com.finalboss_project.finalboss.pais.domain.entity.Pais;
+import com.finalboss_project.finalboss.pais.domain.repository.IPaisRepository;
 import com.finalboss_project.finalboss.region.domain.entity.Region;
 import com.finalboss_project.finalboss.region.domain.repository.IRegionRepository;
 import com.finalboss_project.finalboss.region.dto.RegionDto;
@@ -19,9 +20,17 @@ public class RegionServiceImpl implements IRegionService{
     @Autowired
     private IRegionRepository repository;
 
+    @Autowired
+    private IPaisRepository repository2;
+
     @Override
     public RegionDto create(RegionDto dto) {
-        Region entidad = RegionMapper.toRegion(dto);
+        Pais pais =repository2.findById(dto.getPaisId())
+            .orElseThrow(() -> new ResourceNotFoundException("El país con id: " + dto.getPaisId() + " no fue encontrado"));
+        
+        Region entidad = new Region();
+        entidad.setNombre(dto.getNombre());
+        entidad.setPais(pais);
         Region entidadGuardada = repository.save(entidad);
         return RegionMapper.toDto(entidadGuardada);
     }
@@ -52,8 +61,12 @@ public class RegionServiceImpl implements IRegionService{
     public RegionDto update(Long id, RegionDto updatedDto) {
         Region entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Region con id: " + id + " no encontrada"));
+
+        Pais pais = repository2.findById(updatedDto.getPaisId())
+                .orElseThrow(() -> new ResourceNotFoundException("El país con id: " + updatedDto.getPaisId() + " no fue encontrado"));
         entidad.setNombre(updatedDto.getNombre());
-        entidad.setPais(PaisMapper.toEntity(updatedDto.getPaisDto()));
+        entidad.setPais(pais);
+        repository.save(entidad);
         return RegionMapper.toDto(entidad);
     }
 

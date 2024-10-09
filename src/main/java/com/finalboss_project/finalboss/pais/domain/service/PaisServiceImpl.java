@@ -46,6 +46,7 @@ public class PaisServiceImpl implements IPaisService{
         Pais entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pais con el id: " + id + " no encontrado"));
         entidad.setNombre(updatedDto.getNombre());
+        repository.save(entidad);
         return PaisMapper.toDto(entidad);
     }
 

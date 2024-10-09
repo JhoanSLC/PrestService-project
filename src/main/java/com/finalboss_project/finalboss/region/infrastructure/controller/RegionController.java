@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.finalboss_project.finalboss.region.domain.service.IRegionService;
 import com.finalboss_project.finalboss.region.dto.RegionDto;
 
+import jakarta.validation.Valid;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/region")
@@ -27,7 +29,7 @@ public class RegionController {
     private IRegionService service;
 
     @PostMapping 
-    public ResponseEntity<RegionDto> create(@RequestBody RegionDto dto) {
+    public ResponseEntity<RegionDto> create(@Valid @RequestBody RegionDto dto) {
         RegionDto saved = service.create(dto); 
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
@@ -46,7 +48,7 @@ public class RegionController {
 
     @PutMapping("{regionId}") 
     public ResponseEntity<RegionDto> update(@PathVariable("regionId") Long id,
-                                                 @RequestBody RegionDto updated) {
+                                            @Valid @RequestBody RegionDto updated) {
         RegionDto dto = service.update(id, updated); 
         return ResponseEntity.ok(dto); 
     }
