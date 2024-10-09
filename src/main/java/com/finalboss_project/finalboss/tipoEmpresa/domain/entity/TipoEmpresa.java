@@ -1,10 +1,17 @@
 package com.finalboss_project.finalboss.tipoEmpresa.domain.entity;
 
+import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,10 +32,18 @@ public class TipoEmpresa {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tipoEmpresaId")
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
     private String descripcion;
 
+    @OneToMany(mappedBy = "tipoEmpresa", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private List<Empresa> empresas;
+
+    public TipoEmpresa(Long id, String descripcion) {
+        this.id = id;
+        this.descripcion = descripcion;
+    }
+    
 }

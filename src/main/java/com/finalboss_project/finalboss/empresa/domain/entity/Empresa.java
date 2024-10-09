@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Empresa {
 
     @Id
-    @Column(name = "empresaId")
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
