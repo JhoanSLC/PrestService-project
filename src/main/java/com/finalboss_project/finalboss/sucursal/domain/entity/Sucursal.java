@@ -1,6 +1,9 @@
-package com.finalboss_project.finalboss.direccion.domain.entity;
+package com.finalboss_project.finalboss.sucursal.domain.entity;
 
-import com.finalboss_project.finalboss.ciudad.domain.entity.Ciudad;
+import java.sql.Timestamp;
+
+import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
+import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,29 +21,26 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "direccion")
-public class Direccion {
+@Table(name = "sucursal")
+public class Sucursal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String calle;
+    private String nombre;
 
     @Column(nullable = false)
-    private String carrera;
+    private String nit;
 
-    @Column(nullable = true)
-    private String descripcion;
-
-    @Column(nullable = false)
-    private String barrio;
+    private Timestamp fechaCreacion;
 
     @ManyToOne
-    @JoinColumn(name = "ciudadId", nullable = false)
-    private Ciudad ciudad;
+    @JoinColumn(name = "direccionId")
+    private Direccion direccion;
 
-    
-
+    @ManyToOne
+    @JoinColumn(name = "empresaId")
+    private Empresa empresa;
 }
