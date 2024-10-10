@@ -1,11 +1,11 @@
 package com.finalboss_project.finalboss.sucursal.domain.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
-
-import java.util.List;
+import com.finalboss_project.finalboss.persona.domain.entity.Persona;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,8 +24,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import com.finalboss_project.finalboss.persona.domain.entity.Persona;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,25 +36,37 @@ public class Sucursal {
     private Long id;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El nombre de la surcursal no puede estar vacío")
     private String nombre;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El NIT de la empresa no puede estar vacío")
     private String nit;
 
     private Timestamp fechaCreacion;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "direccionId", nullable = false)
-    @NotNull
+    @NotNull(message = "El ID de la dirección no puede ser nulo")
     private Direccion direccion;
 
     @ManyToOne
     @JoinColumn(name = "empresaId", nullable = false)
-    @NotNull
+    @NotNull(message = "El ID de la empresa no puede ser nulo")
     private Empresa empresa;
 
     @OneToMany(mappedBy = "sucursal")
     private List<Persona> personas;
+
+    public Sucursal(Long id, @NotEmpty(message = "El nombre de la surcursal no puede estar vacío") String nombre,
+            @NotEmpty(message = "El NIT de la empresa no puede estar vacío") String nit, Timestamp fechaCreacion,
+            @NotNull(message = "El ID de la dirección no puede ser nulo") Direccion direccion,
+            @NotNull(message = "El ID de la empresa no puede ser nulo") Empresa empresa) {
+        this.id = id;
+        this.nombre = nombre;
+        this.nit = nit;
+        this.fechaCreacion = fechaCreacion;
+        this.direccion = direccion;
+        this.empresa = empresa;
+    }
 }

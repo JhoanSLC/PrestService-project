@@ -32,17 +32,16 @@ public class EmailPersona {
     private Long id;
 
     @Column(length = 150,nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El email no puede estar vacío")
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "personaId",nullable = false)
-    @NotNull
+    @NotNull(message = "El id de la persona a la que pertenece este email no puede ser nulo")
     private Persona persona;
 
     @ManyToOne
-    @JoinColumn(name = "tipoEmailId",nullable = false)
-    @NotNull
+    @JoinColumn(name = "tipoEmailId")
     private TipoEmail tipoEmail;
 
 }

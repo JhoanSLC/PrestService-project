@@ -32,16 +32,14 @@ public class TipoEmail {
     private Long id;
 
     @Column(length = 100,nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El nombre del tipoEmail no puede estar vacío")
     private String nombre;
 
     @OneToMany(mappedBy = "tipoEmail",cascade = CascadeType.PERSIST)
     private List<EmailPersona> emailPersona;
 
-    public TipoEmail(Long id, @NotEmpty String nombre) {
+    public TipoEmail(Long id, @NotEmpty(message = "El nombre del tipoEmail no puede estar vacío") String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
-
-    
 }

@@ -2,6 +2,8 @@ package com.finalboss_project.finalboss.tipoPersona.domain.entity;
 
 import java.util.List;
 
+import com.finalboss_project.finalboss.persona.domain.entity.Persona;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,12 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import com.finalboss_project.finalboss.persona.domain.entity.Persona;
 
 @Data
 @AllArgsConstructor
@@ -29,10 +28,15 @@ public class TipoPersona {
     private Long id;
 
     @Column(nullable = false,unique = true)
-    @NotEmpty
+    @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío")
     private String nombre;
 
     @OneToMany(mappedBy = "tipoPersona")
     private List<Persona> personas;
 
+    public TipoPersona(Long id,
+            @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío") String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 }

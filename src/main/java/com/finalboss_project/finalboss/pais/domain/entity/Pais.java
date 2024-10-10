@@ -30,18 +30,16 @@ public class Pais {
     private Long id;
 
     @Column(nullable = false,unique = true)
-    @NotEmpty
+    @NotEmpty(message = "El nombre del país no puede estar vacío")
     private String nombre;
 
     @OneToMany(mappedBy = "pais",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Region> regiones;
 
-    public Pais(Long id, String nombre) {
+    public Pais(Long id, @NotEmpty(message = "El nombre del país no puede estar vacío") String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
-    
-    
-    
-
 }
+
+   

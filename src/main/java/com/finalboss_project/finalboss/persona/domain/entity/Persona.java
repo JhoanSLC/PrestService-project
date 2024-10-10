@@ -34,11 +34,11 @@ public class Persona {
     private String id;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El nombre de la persona no puede estar vacío")
     private String nombre;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El apellido de la persona no puede estar vacío")
     private String apellido;
 
     private LocalDateTime fechaRegistro;
@@ -54,16 +54,30 @@ public class Persona {
 
     @ManyToOne
     @JoinColumn(name = "sucursalId",nullable = false)
-    @NotNull
+    @NotNull(message = "El id de la sucursal no puede ser nula")
     private Sucursal sucursal;
 
     @ManyToOne
     @JoinColumn(name = "tipoPersonaId", nullable = false)
-    @NotNull
+    @NotNull(message = "El id del tipo de persona no puede ser nulo")
     private TipoPersona tipoPersona;
 
     @PrePersist
     protected void onCreate(){
         fechaRegistro = LocalDateTime.now();
     }
+
+    public Persona(String id, @NotEmpty(message = "El nombre de la persona no puede estar vacío") String nombre,
+            @NotEmpty(message = "El apellido de la persona no puede estar vacío") String apellido,
+            LocalDateTime fechaRegistro, @NotNull(message = "El id de la sucursal no puede ser nula") Sucursal sucursal,
+            @NotNull(message = "El id del tipo de persona no puede ser nulo") TipoPersona tipoPersona) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaRegistro = fechaRegistro;
+        this.sucursal = sucursal;
+        this.tipoPersona = tipoPersona;
+    }
+
+    
 }

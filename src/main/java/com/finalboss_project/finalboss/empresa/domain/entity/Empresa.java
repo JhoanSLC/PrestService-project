@@ -1,9 +1,9 @@
 package com.finalboss_project.finalboss.empresa.domain.entity;
 
+import java.util.List;
+
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 import com.finalboss_project.finalboss.tipoEmpresa.domain.entity.TipoEmpresa;
-
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,12 +30,12 @@ public class Empresa {
     private Long id;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El nombre de la empresa no puede estar vacío")
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "tipoEmpresaId",nullable = false)
-    @NotNull
+    @NotNull(message = "El id del tipo de empresa no puede ser nulo")
     private TipoEmpresa tipoEmpresa;
 
     @OneToMany(mappedBy = "empresa")

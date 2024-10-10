@@ -31,7 +31,7 @@ public class TipoTelefono {
     private Long id;
 
     @Column(length = 100)
-    @NotEmpty
+    @NotEmpty(message = "El nombre del tipo de telefono no puede estar vacío")
     private String nombre;
 
     @OneToMany(mappedBy = "tipoTelefono")
@@ -41,7 +41,4 @@ public class TipoTelefono {
         this.id = id;
         this.nombre = nombre;
     }
-
-    
-
 }

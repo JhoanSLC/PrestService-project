@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,14 +36,15 @@ public class TipoEmpresa {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty(message = "La descripción del tipo de empresa no puede estar vacía")
     private String descripcion;
 
     @OneToMany(mappedBy = "tipoEmpresa", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Empresa> empresas;
 
-    public TipoEmpresa(Long id, String descripcion) {
+    public TipoEmpresa(Long id,
+            @NotEmpty(message = "La descripción del tipo de empresa no puede estar vacía") String descripcion) {
         this.id = id;
         this.descripcion = descripcion;
     }
-    
 }

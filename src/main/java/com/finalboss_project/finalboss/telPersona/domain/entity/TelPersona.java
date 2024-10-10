@@ -31,17 +31,17 @@ public class TelPersona {
     private Long id;
 
     @Column(nullable = false)
-    @NotNull
+    @NotNull(message = "El número de telefono no puede ser nulo")
     private Long numero;
 
     @ManyToOne
     @JoinColumn(name = "tipoTelefonoId",nullable = false)
-    @NotNull
+    @NotNull(message = "El ID del tipo de telefono no puede ser nulo")
     private TipoTelefono tipoTelefono;
 
     @ManyToOne
     @JoinColumn(name = "personaId",nullable = false)
-    @NotNull
+    @NotNull(message = "El ID de la persona no puede ser nulo")
     private Persona persona;
 
 }

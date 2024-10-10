@@ -1,9 +1,9 @@
 package com.finalboss_project.finalboss.region.domain.entity;
 
+import java.util.List;
+
 import com.finalboss_project.finalboss.ciudad.domain.entity.Ciudad;
 import com.finalboss_project.finalboss.pais.domain.entity.Pais;
-
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,23 +32,21 @@ public class Region {
     private Long id;
 
     @Column(nullable = false,unique = true)
-    @NotEmpty
+    @NotEmpty(message = "El nombre de la región no puede estar vacío")
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "paisId",nullable = false)
-    @NotNull
+    @NotNull(message = "El ID del país no puede ser nulo")
     private Pais pais;
 
     @OneToMany(mappedBy = "region")
     private List<Ciudad> ciudades;
 
-    public Region(Long id, String nombre, Pais pais) {
+    public Region(Long id, @NotEmpty(message = "El nombre de la región no puede estar vacío") String nombre,
+            @NotNull(message = "El ID del país no puede ser nulo") Pais pais) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
     }
-
-    
-
 }

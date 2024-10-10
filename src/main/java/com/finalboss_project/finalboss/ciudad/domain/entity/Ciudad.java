@@ -33,12 +33,12 @@ public class Ciudad {
     private Long id;
 
     @Column(nullable = false)
-    @NotEmpty
+    @NotEmpty(message = "El nombre de la ciudad no puede estar vacío")
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "regionId", nullable = false)
-    @NotNull
+    @NotNull(message = "El id de la región no puede ser nulo")
     private Region region;
 
     @OneToMany(mappedBy = "ciudad")
