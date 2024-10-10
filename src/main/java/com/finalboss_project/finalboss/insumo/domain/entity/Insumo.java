@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,10 +45,6 @@ public class Insumo {
     @NotNull(message = "El precio unitario del insumo no puede ser nulo")
     private Double precioUnitario;
 
-    private Integer stock;
-    private Integer stockMinimo;
-    private Integer stockMaximo;
-
     @OneToMany(mappedBy = "insumo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<ServicioInsumo> servicioInsumos;
 
@@ -56,15 +54,11 @@ public class Insumo {
     public Insumo(Long id,
             @NotEmpty(message = "El codigo interno del insumo no puede estar vacío") String codigoInterno,
             @NotEmpty(message = "El nombre del insumo no puede estar vacío") String nombre,
-            @NotNull(message = "El precio unitario del insumo no puede ser nulo") Double precioUnitario, Integer stock,
-            Integer stockMinimo, Integer stockMaximo) {
+            @NotNull(message = "El precio unitario del insumo no puede ser nulo") Double precioUnitario) {
         this.id = id;
         this.codigoInterno = codigoInterno;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
-        this.stock = stock;
-        this.stockMinimo = stockMinimo;
-        this.stockMaximo = stockMaximo;
     }
 
     

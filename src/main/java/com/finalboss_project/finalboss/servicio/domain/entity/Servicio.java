@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,7 +43,7 @@ public class Servicio {
     private Time tiempoEjecucion;
 
     @OneToMany(mappedBy = "servicio")
-    private List<ServicionInsumo> servicioInsumos;
+    private List<ServicioInsumo> servicioInsumos;
 
     @OneToMany(mappedBy = "servicio")
     private List<DetalleOrder> detallesOrden;
