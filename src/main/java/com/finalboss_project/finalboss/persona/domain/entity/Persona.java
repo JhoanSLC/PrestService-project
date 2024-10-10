@@ -1,5 +1,13 @@
 package com.finalboss_project.finalboss.persona.domain.entity;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
+import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
+import com.finalboss_project.finalboss.telPersona.domain.entity.TelPersona;
+import com.finalboss_project.finalboss.tipoPersona.domain.entity.TipoPersona;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,12 +21,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
-import com.finalboss_project.finalboss.tipoPersona.domain.entity.TipoPersona;
 
 @Data
 @AllArgsConstructor
