@@ -13,6 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,19 +31,24 @@ public class Direccion {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String calle;
 
     @Column(nullable = false)
+    @NotEmpty
     private String carrera;
 
     @Column(nullable = true)
+    @NotEmpty
     private String descripcion;
 
     @Column(nullable = false)
+    @NotEmpty
     private String barrio;
 
     @ManyToOne
     @JoinColumn(name = "ciudadId", nullable = false)
+    @NotNull
     private Ciudad ciudad;
 
     @OneToOne(mappedBy = "direccion")

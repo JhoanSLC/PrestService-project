@@ -8,6 +8,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,9 +32,11 @@ public class Persona {
     private String id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String nombre;
 
     @Column(nullable = false)
+    @NotEmpty
     private String apellido;
 
     private LocalDateTime fechaRegistro;
@@ -48,10 +52,12 @@ public class Persona {
 
     @ManyToOne
     @JoinColumn(name = "sucursalId",nullable = false)
+    @NotNull
     private Sucursal sucursal;
 
     @ManyToOne
     @JoinColumn(name = "tipoPersonaId", nullable = false)
+    @NotNull
     private TipoPersona tipoPersona;
 
     @PrePersist

@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,10 +32,12 @@ public class Region {
     private Long id;
 
     @Column(nullable = false,unique = true)
+    @NotEmpty
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "paisId",nullable = false)
+    @NotNull
     private Pais pais;
 
     @OneToMany(mappedBy = "region")

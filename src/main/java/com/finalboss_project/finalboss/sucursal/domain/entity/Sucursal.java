@@ -18,6 +18,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,19 +38,23 @@ public class Sucursal {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String nombre;
 
     @Column(nullable = false)
+    @NotEmpty
     private String nit;
 
     private Timestamp fechaCreacion;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "direccionId", nullable = false)
+    @NotNull
     private Direccion direccion;
 
     @ManyToOne
     @JoinColumn(name = "empresaId", nullable = false)
+    @NotNull
     private Empresa empresa;
 
     @OneToMany(mappedBy = "sucursal")

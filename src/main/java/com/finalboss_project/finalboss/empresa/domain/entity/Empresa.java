@@ -12,6 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,10 +30,12 @@ public class Empresa {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "tipoEmpresaId",nullable = false)
+    @NotNull
     private TipoEmpresa tipoEmpresa;
 
     @OneToMany(mappedBy = "empresa")
