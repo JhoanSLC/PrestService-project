@@ -38,11 +38,13 @@ public class ServicioInsumo {
 
     @ManyToOne
     @MapsId("servicioId")
-    @JoinColumn(name = "servicioId",referencedColumnName = "id")
+    @JoinColumn(name = "servicioId",referencedColumnName = "id",insertable = false,updatable = false,nullable = false)
+    @NotNull(message = "El ID del servicio no puede ser nulo")
     private Servicio servicio;
 
     @ManyToOne
     @MapsId("insumoId")
-    @JoinColumn(name = "insumoId",referencedColumnName = "id")
+    @JoinColumn(name = "insumoId",referencedColumnName = "id",insertable = false,updatable = false,nullable = false)
+    @NotNull(message = "El ID del servicio no puede ser nulo")
     private Insumo insumo;
 }

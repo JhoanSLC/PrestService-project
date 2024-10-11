@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
+import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 import com.finalboss_project.finalboss.telPersona.domain.entity.TelPersona;
 import com.finalboss_project.finalboss.tipoPersona.domain.entity.TipoPersona;

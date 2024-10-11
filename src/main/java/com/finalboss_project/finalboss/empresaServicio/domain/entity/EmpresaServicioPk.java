@@ -1,6 +1,4 @@
-package com.finalboss_project.finalboss.servicioInsumo.domain.entity;
-
-import java.io.Serializable;
+package com.finalboss_project.finalboss.empresaServicio.domain.entity;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -11,19 +9,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Embeddable
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-@Embeddable
-public class ServicioInsumoPk implements Serializable{
+public class EmpresaServicioPk {
 
-    @Column(name = "insumoId")
-    @NotNull
-    private Long insumoId;
+    @Column(name = "sucursalId")
+    @NotNull(message = "El ID de la sucursal no puede ser nulo")
+    private Long sucursalId;
 
     @Column(name = "servicioId")
-    @NotNull
+    @NotNull(message = "El ID del servicio no puede ser nulo")
     private Long servicioId;
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
 
 import jakarta.persistence.Column;
@@ -37,19 +38,29 @@ public class Servicio {
     private String nombre;
     
     @Column(nullable = false)
-    @NotNull(message = "ENDER PEARLLLLLLL")
+    @NotNull(message = "El campo requiereInsumo no puede ser nulo")
     private Boolean requiereInsumo;
 
     private Time tiempoEjecucion;
 
     @OneToMany(mappedBy = "servicio")
+    private List<EmpresaServicio> empresaServicios;
+
+    @OneToMany(mappedBy = "servicio")
     private List<ServicioInsumo> servicioInsumos;
 
     @OneToMany(mappedBy = "servicio")
-    private List<DetalleOrder> detallesOrden;
+    private List<DetalleOrdenServicio> detallesOrdenServicios;
 
     @OneToMany(mappedBy = "servicio")
     private List<PersonaInsumo> personaInsumos;
+
+    @OneToMany(mappedBy = "servicio")
+    private List<DetalleOrdenTrabajo> detallesOrdenTrabajo;
+
+    @OneToMany(mappedBy = "servicio")
+    private List<AprobacionServicio> aprobacionServicios;
+
 
     public Servicio(Long id, @NotEmpty(message = "El nombre no puede estar vacío") String nombre,
             @NotNull(message = "ENDER PEARLLLLLLL") Boolean requiereInsumo, Time tiempoEjecucion) {
