@@ -3,6 +3,7 @@ package com.finalboss_project.finalboss.persona.domain.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
 import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
@@ -45,12 +46,15 @@ public class Persona {
     private LocalDateTime fechaRegistro;
 
     @OneToMany(mappedBy = "persona")
+    @JsonIgnore
     private List<TelPersona> telPersona;
 
     @OneToMany(mappedBy = "persona")
+    @JsonIgnore
     private List<EmailPersona> emailPersona;
 
     @OneToMany(mappedBy = "persona")
+    @JsonIgnore
     private List<PersonaInsumo> personaInsumo;
 
     @ManyToOne

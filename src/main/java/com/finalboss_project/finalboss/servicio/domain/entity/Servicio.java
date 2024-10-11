@@ -5,6 +5,11 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalboss_project.finalboss.aprobacionServicio.domain.entity.AprobacionServicio;
+import com.finalboss_project.finalboss.detalleOrdenServicio.domain.entity.DetalleOrdenServicio;
+import com.finalboss_project.finalboss.detalleOrdenTrabajo.domain.entity.DetalleOrdenTrabajo;
+import com.finalboss_project.finalboss.empresaServicio.domain.entity.EmpresaServicio;
 import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
 
@@ -44,21 +49,27 @@ public class Servicio {
     private Time tiempoEjecucion;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<EmpresaServicio> empresaServicios;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<ServicioInsumo> servicioInsumos;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<DetalleOrdenServicio> detallesOrdenServicios;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<PersonaInsumo> personaInsumos;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<DetalleOrdenTrabajo> detallesOrdenTrabajo;
 
     @OneToMany(mappedBy = "servicio")
+    @JsonIgnore
     private List<AprobacionServicio> aprobacionServicios;
 
 

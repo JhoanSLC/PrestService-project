@@ -3,6 +3,7 @@ package com.finalboss_project.finalboss.sucursal.domain.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 import com.finalboss_project.finalboss.persona.domain.entity.Persona;
@@ -56,6 +57,7 @@ public class Sucursal {
     private Empresa empresa;
 
     @OneToMany(mappedBy = "sucursal")
+    @JsonIgnore
     private List<Persona> personas;
 
     public Sucursal(Long id, @NotEmpty(message = "El nombre de la surcursal no puede estar vacío") String nombre,

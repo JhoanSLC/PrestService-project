@@ -2,6 +2,7 @@ package com.finalboss_project.finalboss.empresa.domain.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 import com.finalboss_project.finalboss.tipoEmpresa.domain.entity.TipoEmpresa;
 
@@ -40,6 +41,7 @@ public class Empresa {
     private TipoEmpresa tipoEmpresa;
 
     @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Sucursal> sucursales;
 
     public Empresa(Long id, String nombre, TipoEmpresa tipoEmpresa) {

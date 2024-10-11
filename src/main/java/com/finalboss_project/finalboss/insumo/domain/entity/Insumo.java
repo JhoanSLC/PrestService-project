@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
 
@@ -47,9 +48,11 @@ public class Insumo {
     private Double precioUnitario;
 
     @OneToMany(mappedBy = "insumo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<ServicioInsumo> servicioInsumos;
 
     @OneToMany(mappedBy = "insumo",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<PersonaInsumo> personaInsumos;
 
     public Insumo(Long id,

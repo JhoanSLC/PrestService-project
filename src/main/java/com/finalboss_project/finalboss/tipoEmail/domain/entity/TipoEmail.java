@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
 
 import jakarta.persistence.CascadeType;
@@ -36,6 +37,7 @@ public class TipoEmail {
     private String nombre;
 
     @OneToMany(mappedBy = "tipoEmail",cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private List<EmailPersona> emailPersona;
 
     public TipoEmail(Long id, @NotEmpty(message = "El nombre del tipoEmail no puede estar vacío") String nombre) {

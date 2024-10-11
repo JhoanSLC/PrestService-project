@@ -2,6 +2,7 @@ package com.finalboss_project.finalboss.tipoEmpresa.domain.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 
 import jakarta.persistence.CascadeType;
@@ -40,6 +41,7 @@ public class TipoEmpresa {
     private String descripcion;
 
     @OneToMany(mappedBy = "tipoEmpresa", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Empresa> empresas;
 
     public TipoEmpresa(Long id,

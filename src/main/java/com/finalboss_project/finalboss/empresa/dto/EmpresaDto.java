@@ -1,5 +1,7 @@
 package com.finalboss_project.finalboss.empresa.dto;
 
+import org.springframework.validation.annotation.Validated;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -8,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@Validated
 @NoArgsConstructor
 public class EmpresaDto {
 

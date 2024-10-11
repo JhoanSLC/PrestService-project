@@ -2,6 +2,7 @@ package com.finalboss_project.finalboss.ciudad.domain.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.region.domain.entity.Region;
 
@@ -42,5 +43,6 @@ public class Ciudad {
     private Region region;
 
     @OneToMany(mappedBy = "ciudad")
+    @JsonIgnore
     private List<Direccion> direcciones;
 }

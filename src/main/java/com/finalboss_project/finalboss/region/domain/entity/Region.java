@@ -2,6 +2,7 @@ package com.finalboss_project.finalboss.region.domain.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.ciudad.domain.entity.Ciudad;
 import com.finalboss_project.finalboss.pais.domain.entity.Pais;
 
@@ -41,6 +42,7 @@ public class Region {
     private Pais pais;
 
     @OneToMany(mappedBy = "region")
+    @JsonIgnore
     private List<Ciudad> ciudades;
 
     public Region(Long id, @NotEmpty(message = "El nombre de la región no puede estar vacío") String nombre,

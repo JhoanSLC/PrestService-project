@@ -2,6 +2,7 @@ package com.finalboss_project.finalboss.pais.domain.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.region.domain.entity.Region;
 
 import jakarta.persistence.CascadeType;
@@ -34,6 +35,7 @@ public class Pais {
     private String nombre;
 
     @OneToMany(mappedBy = "pais",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Region> regiones;
 
     public Pais(Long id, @NotEmpty(message = "El nombre del país no puede estar vacío") String nombre) {

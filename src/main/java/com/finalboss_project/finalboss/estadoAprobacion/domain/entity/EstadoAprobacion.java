@@ -1,14 +1,14 @@
-package com.finalboss_project.finalboss.tipoTelefono;
-
-import java.util.List;
+package com.finalboss_project.finalboss.estadoAprobacion.domain.entity;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.finalboss_project.finalboss.telPersona.domain.entity.TelPersona;
+import com.finalboss_project.finalboss.aprobacionServicio.domain.entity.AprobacionServicio;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,28 +19,30 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
 @Entity
-@Table(name = "tipoTelefono")
-public class TipoTelefono {
+@Table(name = "estadoAprobacion")
+public class EstadoAprobacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
-    @NotEmpty(message = "El nombre del tipo de telefono no puede estar vacío")
-    private String nombre;
+    @Column(length = 60,nullable = false,unique = true)
+    @NotEmpty
+    private String name;
 
-    @OneToMany(mappedBy = "tipoTelefono")
+    @OneToMany(mappedBy = "estadoAprobacion",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<TelPersona> telPersona;
+    private List<AprobacionServicio> aprobacionServicios;
 
-    public TipoTelefono(Long id, @NotEmpty String nombre) {
+    public EstadoAprobacion(Long id, @NotEmpty String name) {
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
     }
 }
