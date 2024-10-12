@@ -40,7 +40,7 @@ public class Empresa {
     @NotNull(message = "El id del tipo de empresa no puede ser nulo")
     private TipoEmpresa tipoEmpresa;
 
-    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "empresa",)
     @JsonIgnore
     private List<Sucursal> sucursales;
 
