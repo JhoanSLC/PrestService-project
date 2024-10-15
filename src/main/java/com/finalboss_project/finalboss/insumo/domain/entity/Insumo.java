@@ -2,16 +2,12 @@ package com.finalboss_project.finalboss.insumo.domain.entity;
 
 import java.util.List;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.servicioInsumo.domain.entity.ServicioInsumo;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "insumo")
 public class Insumo {
@@ -47,11 +42,11 @@ public class Insumo {
     @NotNull(message = "El precio unitario del insumo no puede ser nulo")
     private Double precioUnitario;
 
-    @OneToMany(mappedBy = "insumo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "insumo")
     @JsonIgnore
     private List<ServicioInsumo> servicioInsumos;
 
-    @OneToMany(mappedBy = "insumo",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "insumo")
     @JsonIgnore
     private List<PersonaInsumo> personaInsumos;
 

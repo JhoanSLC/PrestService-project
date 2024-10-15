@@ -2,12 +2,10 @@ package com.finalboss_project.finalboss.tipoEmail.domain.entity;
 
 import java.util.List;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +22,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Validated
 @Table(name = "tipoEmail")
 public class TipoEmail {
 
@@ -36,7 +33,7 @@ public class TipoEmail {
     @NotEmpty(message = "El nombre del tipoEmail no puede estar vacío")
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoEmail",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "tipoEmail")
     @JsonIgnore
     private List<EmailPersona> emailPersona;
 

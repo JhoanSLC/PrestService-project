@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.empresaServicio.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.servicio.domain.entity.Servicio;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
@@ -20,7 +19,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "empresaServicio")
 public class EmpresaServicio {
@@ -34,13 +32,13 @@ public class EmpresaServicio {
 
     @ManyToOne
     @MapsId("sucursalId")
-    @JoinColumn(name = "sucursalId",insertable = false,updatable = false,nullable = false)
-    @NotNull()
+    @JoinColumn(name = "sucursalId",nullable = false)
+    @NotNull
     private Sucursal sucursal;
 
     @ManyToOne
     @MapsId("servicioId")
-    @JoinColumn(name = "servicioId",insertable = false,updatable = false,nullable = false)
+    @JoinColumn(name = "servicioId",nullable = false)
     @NotNull
     private Servicio servicio;
 }

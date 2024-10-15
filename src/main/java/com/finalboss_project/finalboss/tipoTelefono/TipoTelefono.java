@@ -2,7 +2,6 @@ package com.finalboss_project.finalboss.tipoTelefono;
 
 import java.util.List;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.telPersona.domain.entity.TelPersona;
@@ -22,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "tipoTelefono")
 public class TipoTelefono {

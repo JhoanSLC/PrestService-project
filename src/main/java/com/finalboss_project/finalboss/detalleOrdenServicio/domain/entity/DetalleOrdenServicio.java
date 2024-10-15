@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.detalleOrdenServicio.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.ordenServicio.domain.entity.OrdenServicio;
 import com.finalboss_project.finalboss.servicio.domain.entity.Servicio;
@@ -21,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "detalleOrdenServicio")
 public class DetalleOrdenServicio {

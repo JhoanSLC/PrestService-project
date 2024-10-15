@@ -1,6 +1,7 @@
 package com.finalboss_project.finalboss.personaInsumo.domain.entity;
 
-import jakarta.persistence.Column;
+import java.io.Serializable;
+
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class PersonaInsumoPk {
+public class PersonaInsumoPk implements Serializable {
 
-    @Column(name = "personaId")
     private Long personaId;
-
-    @Column(name = "insumoId")
     private Long insumoId;
 }

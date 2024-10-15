@@ -1,14 +1,12 @@
 package com.finalboss_project.finalboss.estadoOrdenTrabajo.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.detalleOrdenTrabajo.domain.entity.DetalleOrdenTrabajo;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +22,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "estadoOrdenTrabajo")
 public class EstadoOrdenTrabajo {
@@ -37,7 +34,7 @@ public class EstadoOrdenTrabajo {
     @NotEmpty
     private String nombre;
 
-    @OneToMany(mappedBy = "estadoOrdenTrabajo",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "estadoOrdenTrabajo")
     @JsonIgnore
     private List<DetalleOrdenTrabajo> detalleOrdenTrabajos;
 

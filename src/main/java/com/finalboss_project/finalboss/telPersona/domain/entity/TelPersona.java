@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.telPersona.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.persona.domain.entity.Persona;
 import com.finalboss_project.finalboss.tipoTelefono.TipoTelefono;
@@ -21,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "telPersona")
 public class TelPersona {

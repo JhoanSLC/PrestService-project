@@ -8,7 +8,6 @@ import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 import com.finalboss_project.finalboss.persona.domain.entity.Persona;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,7 +45,7 @@ public class Sucursal {
 
     private Timestamp fechaCreacion;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     @JoinColumn(name = "direccionId", nullable = false)
     @NotNull(message = "El ID de la dirección no puede ser nulo")
     private Direccion direccion;

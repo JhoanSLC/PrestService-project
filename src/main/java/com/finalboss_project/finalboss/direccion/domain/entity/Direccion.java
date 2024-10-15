@@ -50,6 +50,7 @@ public class Direccion {
     private Ciudad ciudad;
 
     @OneToOne(mappedBy = "direccion")
+    @JoinColumn(name = "sucursalId",nullable = false)
     private Sucursal sucursal;
 
     public Direccion(Long id, @NotEmpty(message = "La calle de la dirección no puede estar vacía") String calle,

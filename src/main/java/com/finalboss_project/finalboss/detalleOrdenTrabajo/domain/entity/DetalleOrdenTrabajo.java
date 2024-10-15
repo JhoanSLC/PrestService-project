@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.detalleOrdenTrabajo.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.estadoOrdenTrabajo.domain.entity.EstadoOrdenTrabajo;
 import com.finalboss_project.finalboss.ordenTrabajo.domain.entity.OrdenTrabajo;
@@ -25,7 +24,6 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "detalleOrdenTrabajo")
 public class DetalleOrdenTrabajo {

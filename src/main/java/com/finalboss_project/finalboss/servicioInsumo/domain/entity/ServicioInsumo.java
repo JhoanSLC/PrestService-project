@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.servicioInsumo.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.insumo.domain.entity.Insumo;
 import com.finalboss_project.finalboss.servicio.domain.entity.Servicio;
@@ -20,7 +19,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "servicioInsumo")
 public class ServicioInsumo {
@@ -38,13 +36,13 @@ public class ServicioInsumo {
 
     @ManyToOne
     @MapsId("servicioId")
-    @JoinColumn(name = "servicioId",referencedColumnName = "id",insertable = false,updatable = false,nullable = false)
+    @JoinColumn(name = "servicioId",referencedColumnName = "id",nullable = false)
     @NotNull(message = "El ID del servicio no puede ser nulo")
     private Servicio servicio;
 
     @ManyToOne
     @MapsId("insumoId")
-    @JoinColumn(name = "insumoId",referencedColumnName = "id",insertable = false,updatable = false,nullable = false)
+    @JoinColumn(name = "insumoId",referencedColumnName = "id",nullable = false)
     @NotNull(message = "El ID del servicio no puede ser nulo")
     private Insumo insumo;
 }

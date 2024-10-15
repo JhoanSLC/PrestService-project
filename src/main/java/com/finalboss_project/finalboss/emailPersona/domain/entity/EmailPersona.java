@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.emailPersona.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.finalboss_project.finalboss.persona.domain.entity.Persona;
 import com.finalboss_project.finalboss.tipoEmail.domain.entity.TipoEmail;
@@ -22,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "emailPersona")
 public class EmailPersona {

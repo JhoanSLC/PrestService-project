@@ -1,6 +1,5 @@
 package com.finalboss_project.finalboss.estadoOrdenServicio.domain.entity;
 
-import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.ordenServicio.domain.entity.OrdenServicio;
@@ -23,7 +22,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Validated
 @Entity
 @Table(name = "estadoOrdenServicio")
 public class EstadoOrdenServicio {

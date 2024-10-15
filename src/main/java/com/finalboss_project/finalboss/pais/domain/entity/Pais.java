@@ -5,10 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.region.domain.entity.Region;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +32,7 @@ public class Pais {
     @NotEmpty(message = "El nombre del país no puede estar vacío")
     private String nombre;
 
-    @OneToMany(mappedBy = "pais",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pais")
     @JsonIgnore
     private List<Region> regiones;
 
