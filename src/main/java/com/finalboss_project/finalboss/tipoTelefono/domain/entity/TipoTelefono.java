@@ -1,5 +1,4 @@
-package com.finalboss_project.finalboss.tipoTelefono;
-
+package com.finalboss_project.finalboss.tipoTelefono.domain.entity;
 import java.util.List;
 
 

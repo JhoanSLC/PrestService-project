@@ -1,10 +1,6 @@
 package com.finalboss_project.finalboss.aprobacionServicio.dto;
 
-import org.springframework.validation.annotation.Validated;
 
-import com.finalboss_project.finalboss.ordenTrabajo.domain.entity.OrdenTrabajo;
-import com.finalboss_project.finalboss.persona.domain.entity.Persona;
-import com.finalboss_project.finalboss.servicio.domain.entity.Servicio;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,21 +9,23 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Validated
 @AllArgsConstructor
 public class AprobacionServicioDto {
 
-  private Long id;
+	private Long id;
 
-  @NotNull
-  private OrdenTrabajo ordenTrabajo;
+	@NotNull
+	private Long ordenTrabajoId;
 
-  @NotNull
-  private Persona persona;
+	@NotNull
+	private String personaId;
 
-  @NotNull
-  private Servicio servicio;
+	@NotNull
+	private Long servicioId;
 
-  private String hallazgo;
-  private String solucion;
+	private String hallazgo;
+	private String solucion;
+
+	@NotNull
+	private Long estadoAprobacionId;
 }

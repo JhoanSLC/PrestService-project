@@ -2,7 +2,7 @@ package com.finalboss_project.finalboss.telPersona.domain.entity;
 
 
 import com.finalboss_project.finalboss.persona.domain.entity.Persona;
-import com.finalboss_project.finalboss.tipoTelefono.TipoTelefono;
+import com.finalboss_project.finalboss.tipoTelefono.domain.entity.TipoTelefono;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

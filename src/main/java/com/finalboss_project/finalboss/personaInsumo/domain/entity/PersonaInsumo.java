@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class PersonaInsumo {
 
     @EmbeddedId
-    private PersonaInsumo id;
+    private PersonaInsumoPk id;
 
     @ManyToOne
     @JoinColumn(name = "servicioId",nullable = false)
