@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalboss_project.finalboss.aprobacionServicio.domain.entity.AprobacionServicio;
+import com.finalboss_project.finalboss.cuenta.domain.entity.Cuenta;
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
+import com.finalboss_project.finalboss.ordenServicio.domain.entity.OrdenServicio;
+import com.finalboss_project.finalboss.ordenTrabajo.domain.entity.OrdenTrabajo;
 import com.finalboss_project.finalboss.personaInsumo.domain.entity.PersonaInsumo;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 import com.finalboss_project.finalboss.telPersona.domain.entity.TelPersona;
@@ -56,6 +60,22 @@ public class Persona {
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
     private List<PersonaInsumo> personaInsumo;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<OrdenServicio> ordenServicios;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<OrdenTrabajo> ordenTrabajos;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<AprobacionServicio> aprobacionServicios;
+
+    @OneToMany(mappedBy = "persona")
+    @JsonIgnore
+    private List<Cuenta> cuentas;
 
     @ManyToOne
     @JoinColumn(name = "sucursalId",nullable = false)
