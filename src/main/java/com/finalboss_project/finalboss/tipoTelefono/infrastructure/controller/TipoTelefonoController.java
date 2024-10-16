@@ -1,4 +1,4 @@
-package com.finalboss_project.finalboss.tipoTelefono.infrastructure;
+package com.finalboss_project.finalboss.tipoTelefono.infrastructure.controller;
 
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class TipoTelefonoController {
     @DeleteMapping("{tipoTelefonoId}") 
     public ResponseEntity<String> delete(@PathVariable("tipoTelefonoId") Long id) {
         service.delete(id); 
-            return ResponseEntity.ok("¡Pais eliminado exitosamente!"); 
+            return ResponseEntity.ok("¡Tipo Telefono eliminado exitosamente!"); 
     }
 
 }
