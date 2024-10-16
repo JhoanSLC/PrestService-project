@@ -1,4 +1,4 @@
-package com.finalboss_project.finalboss.detalleOrdenTrabajo.domain.infrastructure.controller;
+package com.finalboss_project.finalboss.detalleOrdenTrabajo.infrastructure.controller;
 
 import java.util.List;
 
