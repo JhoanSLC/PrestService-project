@@ -1,4 +1,4 @@
-package com.finalboss_project.finalboss.cuenta.infrastructure;
+package com.finalboss_project.finalboss.cuenta.infrastructure.controller;
 
 import java.util.List;
 
