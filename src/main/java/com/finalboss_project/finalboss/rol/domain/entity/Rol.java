@@ -1,17 +1,17 @@
-package com.finalboss_project.finalboss.cuenta.domain.entity;
+package com.finalboss_project.finalboss.rol.domain.entity;
 
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 
-import com.finalboss_project.finalboss.persona.domain.entity.Persona;
-import com.finalboss_project.finalboss.rol.domain.entity.Rol;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.finalboss_project.finalboss.cuenta.domain.entity.Cuenta;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -21,29 +21,25 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity 
+@Entity
 @Validated
-@Table(name = "cuenta")
-public class Cuenta {
+@Table(name = "rol")
+public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
     @Column(unique = true,nullable = false)
-    private String usuario;
-
     @NotEmpty
-    @Column(unique = true,nullable = false)
-    private String contraseña;
+    private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "rolId")
-    private Rol rol;
+    @OneToMany(mappedBy = "rol")
+    @JsonIgnore
+    private List<Cuenta> cuenta;
 
-    @ManyToOne
-    @JoinColumn(name = "personaId")
-    private Persona persona;
-
+    public Rol(Long id, @NotEmpty String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 }
