@@ -19,7 +19,7 @@ import com.finalboss_project.finalboss.tipoPersona.dto.TipoPersonaDto;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/pais")
+@RequestMapping("/api/tipoPersona")
 public class TipoPersonaController {
 
     @Autowired

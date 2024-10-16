@@ -1,7 +1,6 @@
 package com.finalboss_project.finalboss.pais.infrastructure.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +52,7 @@ public class PaisController {
 
     @DeleteMapping("{paisId}") 
     public ResponseEntity<String> delete(@PathVariable("paisId") Long id) {
-        service.delete(id); 
+        service.delete(id);
             return ResponseEntity.ok("¡Pais eliminado exitosamente!"); 
     }
 
