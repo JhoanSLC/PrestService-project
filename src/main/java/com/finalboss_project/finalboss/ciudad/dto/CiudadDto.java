@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @Validated
 public class CiudadDto {
 
-    @NotNull(message = "El id de la ciudadDto no puede ser nulo")
     private Long id;
 
     @NotEmpty(message = "El nombre de la ciudadDto no puede estar vacía")

@@ -28,9 +28,11 @@ public class RegionServiceImpl implements IRegionService{
         Pais pais =repository2.findById(dto.getPaisId())
             .orElseThrow(() -> new ResourceNotFoundException("El país con id: " + dto.getPaisId() + " no fue encontrado"));
         
-        Region entidad = new Region();
-        entidad.setNombre(dto.getNombre());
-        entidad.setPais(pais);
+        Region entidad = new Region(
+            dto.getId(),
+            dto.getNombre(),
+            pais
+        );
         Region entidadGuardada = repository.save(entidad);
         return RegionMapper.toDto(entidadGuardada);
     }
