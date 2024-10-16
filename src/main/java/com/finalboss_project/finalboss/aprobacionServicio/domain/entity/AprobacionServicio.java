@@ -31,14 +31,17 @@ public class AprobacionServicio {
 
     @ManyToOne
     @JoinColumn(name = "ordenTrabajoId",nullable = false)
+    @NotNull
     private OrdenTrabajo ordenTrabajo;
 
     @ManyToOne
     @JoinColumn(name = "clienteId",nullable = false)
+    @NotNull
     private Persona persona;
 
     @ManyToOne
     @JoinColumn(name = "servicioId",nullable = false)
+    @NotNull
     private Servicio servicio;
 
     private String hallazgo;
@@ -46,6 +49,7 @@ public class AprobacionServicio {
 
     @ManyToOne
     @JoinColumn(name = "estadoAprobacionId",nullable = false)
+    @NotNull
     private EstadoAprobacion estadoAprobacion;
 
 }

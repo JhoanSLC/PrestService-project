@@ -45,4 +45,13 @@ public class Ciudad {
     @OneToMany(mappedBy = "ciudad")
     @JsonIgnore
     private List<Direccion> direcciones;
+
+    public Ciudad(Long id, @NotEmpty(message = "El nombre de la ciudad no puede estar vacío") String nombre,
+            @NotNull(message = "El id de la región no puede ser nulo") Region region) {
+        this.id = id;
+        this.nombre = nombre;
+        this.region = region;
+    }
+
+    
 }
