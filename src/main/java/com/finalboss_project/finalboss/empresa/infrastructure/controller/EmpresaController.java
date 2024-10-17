@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.finalboss_project.finalboss.empresa.domain.service.IEmpresaService;
 import com.finalboss_project.finalboss.empresa.dto.EmpresaDto;
 
+import jakarta.validation.Valid;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/empresa")
@@ -27,7 +29,7 @@ public class EmpresaController {
     private IEmpresaService service;
 
     @PostMapping 
-    public ResponseEntity<EmpresaDto> create(@RequestBody EmpresaDto dto) {
+    public ResponseEntity<EmpresaDto> create(@Valid @RequestBody EmpresaDto dto) {
         EmpresaDto saved = service.create(dto); 
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
