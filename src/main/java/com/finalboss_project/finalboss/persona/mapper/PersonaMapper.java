@@ -10,14 +10,9 @@ public class PersonaMapper {
             persona.getId(),
             persona.getApellido(),
             persona.getNombre(),
-            persona.getTipoPersona().getId(),
-            persona.getGenero().getId(),
-            persona.getFechaNacimiento(),
-            persona.getTipoDocumento().getId(),
-            persona.getDocumento(),
-            persona.getDireccion(),
-            persona.getTelefono(),
-            persona.getEmail()
+            persona.getFechaRegistro(),
+            persona.getSucursal().getId(),
+            persona.getTipoPersona().getId()
         );
     }
 }
