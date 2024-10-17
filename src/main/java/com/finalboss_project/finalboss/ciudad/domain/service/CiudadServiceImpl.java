@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.finalboss_project.finalboss.ciudad.domain.entity.Ciudad;
 import com.finalboss_project.finalboss.ciudad.domain.repository.ICiudadRepository;
-import com.finalboss_project.finalboss.ciudad.dto.EstadoAprobacionDto;
+import com.finalboss_project.finalboss.ciudad.dto.CiudadDto;
 import com.finalboss_project.finalboss.ciudad.mapper.CiudadMapper;
 import com.finalboss_project.finalboss.customExceptions.ResourceNotFoundException;
 import com.finalboss_project.finalboss.region.domain.entity.Region;
@@ -24,7 +24,7 @@ public class CiudadServiceImpl implements ICiudadService {
     private IRegionRepository regionRepo;
 
     @Override
-    public EstadoAprobacionDto create(EstadoAprobacionDto dto) {
+    public CiudadDto create(CiudadDto dto) {
         Long relacionId = dto.getRegionId();
 
         Region entidadRelacionada = regionRepo.findById(relacionId)
@@ -48,7 +48,7 @@ public class CiudadServiceImpl implements ICiudadService {
     }
 
     @Override
-    public List<EstadoAprobacionDto> getAll() {
+    public List<CiudadDto> getAll() {
         List<Ciudad> entidades = repository.findAll();
         return entidades.stream()
                 .map(CiudadMapper::toDto)
@@ -56,14 +56,14 @@ public class CiudadServiceImpl implements ICiudadService {
     }
 
     @Override
-    public EstadoAprobacionDto getById(Long id) {
+    public CiudadDto getById(Long id) {
         Ciudad entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ciudad con id: " + id + " no encontrada"));
         return CiudadMapper.toDto(entidad);
     }
 
     @Override
-    public EstadoAprobacionDto update(Long id, EstadoAprobacionDto updatedDto) {
+    public CiudadDto update(Long id, CiudadDto updatedDto) {
         Ciudad entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ciudad con id: " + id + " no encontrada"));
         Region region = regionRepo.findById(updatedDto.getRegionId())
