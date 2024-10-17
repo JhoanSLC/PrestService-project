@@ -27,7 +27,7 @@ public class EstadoAprobacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;    
 
     @Column(length = 60,nullable = false,unique = true)
     @NotEmpty
