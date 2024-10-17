@@ -2,15 +2,15 @@ package com.finalboss_project.finalboss.ciudad.domain.service;
 
 import java.util.List;
 
-import com.finalboss_project.finalboss.ciudad.dto.CiudadDto;
+import com.finalboss_project.finalboss.ciudad.dto.EstadoAprobacionDto;
 
 
 public interface ICiudadService {
 
-    CiudadDto create(CiudadDto dto);
-    CiudadDto getById(Long id);
-    List<CiudadDto> getAll();
-    CiudadDto update(Long id, CiudadDto updatedDto);
+    EstadoAprobacionDto create(EstadoAprobacionDto dto);
+    EstadoAprobacionDto getById(Long id);
+    List<EstadoAprobacionDto> getAll();
+    EstadoAprobacionDto update(Long id, EstadoAprobacionDto updatedDto);
     void delete(Long id);
 
 }
