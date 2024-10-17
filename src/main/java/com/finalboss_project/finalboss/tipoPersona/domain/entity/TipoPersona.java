@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+>>>>>>> a4ab640d92cb361927e60c7ed32590240dad0d3a
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,19 +27,19 @@ public class TipoPersona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false,unique = true)
-    @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío")
+    @Column(nullable = false)
     private String nombre;
 
     @OneToMany(mappedBy = "tipoPersona")
     @JsonIgnore
     private List<Persona> personas;
 
-    public TipoPersona(Long id,
-            @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío") String nombre) {
+    public TipoPersona(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
+    
 }

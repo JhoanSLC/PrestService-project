@@ -1,11 +1,10 @@
-package com.finalboss_project.finalboss.ciudad.domain.service;
+package com.finalboss_project.finalboss.estadoAprobacion.domain.service;
 
 import java.util.List;
 
-import com.finalboss_project.finalboss.ciudad.dto.EstadoAprobacionDto;
+import com.finalboss_project.finalboss.estadoAprobacion.dto.EstadoAprobacionDto;
 
-
-public interface ICiudadService {
+public interface IEstadoAprobacionService {
 
     EstadoAprobacionDto create(EstadoAprobacionDto dto);
     EstadoAprobacionDto getById(Long id);
