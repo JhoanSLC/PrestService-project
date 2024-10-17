@@ -1,4 +1,4 @@
-package com.finalboss_project.finalboss.ciudad.controller;
+package com.finalboss_project.finalboss.estadoOrdenTrabajo.infrastructure.controller;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.finalboss_project.finalboss.ciudad.domain.service.ICiudadService;
-import com.finalboss_project.finalboss.ciudad.dto.CiudadDto;
+import com.finalboss_project.finalboss.estadoOrdenTrabajo.domain.service.IEstadoOrdenTrabajoService;
+import com.finalboss_project.finalboss.estadoOrdenTrabajo.dto.EstadoOrdenTrabajoDto;
 
 import jakarta.validation.Valid;
 
@@ -26,36 +26,36 @@ import jakarta.validation.Valid;
 public class EstadoOrdenTrabajoController {
 
     @Autowired
-    private ICiudadService service;
+    private IEstadoOrdenTrabajoService service;
 
     @PostMapping 
-    public ResponseEntity<CiudadDto> create(@Valid @RequestBody CiudadDto dto) {
-        CiudadDto saved = service.create(dto); 
+    public ResponseEntity<EstadoOrdenTrabajoDto> create(@Valid @RequestBody EstadoOrdenTrabajoDto dto) {
+        EstadoOrdenTrabajoDto saved = service.create(dto); 
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
 
-    @GetMapping("{ciudadId}") 
-    public ResponseEntity<CiudadDto> getById(@PathVariable("ciudadId") Long id) {
-        CiudadDto dto = service.getById(id); 
+    @GetMapping("{estadoOrdenTrabajoId}") 
+    public ResponseEntity<EstadoOrdenTrabajoDto> getById(@PathVariable("estadoOrdenTrabajoId") Long id) {
+        EstadoOrdenTrabajoDto dto = service.getById(id); 
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping 
-    public ResponseEntity<List<CiudadDto>> getAll() {
-        List<CiudadDto> entidades = service.getAll(); 
+    public ResponseEntity<List<EstadoOrdenTrabajoDto>> getAll() {
+        List<EstadoOrdenTrabajoDto> entidades = service.getAll(); 
         return ResponseEntity.ok(entidades); 
     }
 
-    @PutMapping("{ciudadId}") 
-    public ResponseEntity<CiudadDto> update(@PathVariable("ciudadId") Long id,
-                                                 @RequestBody CiudadDto updated) {
-        CiudadDto dto = service.update(id, updated); 
+    @PutMapping("{estadoOrdenTrabajoId}") 
+    public ResponseEntity<EstadoOrdenTrabajoDto> update(@PathVariable("estadoOrdenTrabajoId") Long id,
+                                                 @RequestBody EstadoOrdenTrabajoDto updated) {
+        EstadoOrdenTrabajoDto dto = service.update(id, updated); 
         return ResponseEntity.ok(dto); 
     }
 
-    @DeleteMapping("{ciudadId}") 
-    public ResponseEntity<String> delete(@PathVariable("ciudadId") Long id) {
+    @DeleteMapping("{estadoOrdenTrabajoId}") 
+    public ResponseEntity<String> delete(@PathVariable("estadoOrdenTrabajoId") Long id) {
         service.delete(id); 
-        return ResponseEntity.ok("¡Ciudad eliminada exitosamente!"); 
+        return ResponseEntity.ok("¡EstadoOrdenTrabajo eliminado exitosamente!"); 
     }
 }
