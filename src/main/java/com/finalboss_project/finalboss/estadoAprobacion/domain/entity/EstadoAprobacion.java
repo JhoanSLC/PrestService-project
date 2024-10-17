@@ -31,7 +31,7 @@ public class EstadoAprobacion {
 
     @Column(length = 60,nullable = false,unique = true)
     @NotEmpty
-    private String name;
+    private String nombre;
 
     @OneToMany(mappedBy = "estadoAprobacion")
     @JsonIgnore
@@ -39,6 +39,6 @@ public class EstadoAprobacion {
 
     public EstadoAprobacion(Long id, @NotEmpty String name) {
         this.id = id;
-        this.name = name;
+        this.nombre = name;
     }
 }

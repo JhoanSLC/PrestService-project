@@ -61,11 +61,15 @@ public class Persona {
     @JsonIgnore
     private List<PersonaInsumo> personaInsumo;
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     private List<OrdenServicio> ordenServicios;
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "empleado")
+    @JsonIgnore
+    private List<OrdenServicio> ordenServiciosEmpleado;
+
+    @OneToMany(mappedBy = "empleado")
     @JsonIgnore
     private List<OrdenTrabajo> ordenTrabajos;
 

@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class PersonaInsumoPk implements Serializable {
 
-    private Long personaId;
+    private String personaId;
     private Long insumoId;
 }

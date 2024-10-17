@@ -16,5 +16,5 @@ public class EstadoAprobacionDto {
     private Long id;
 
     @NotEmpty(message = "El nombre en estadoAprobacionDto no puede estar vacío")
-    private String name;
+    private String nombre;
 }
