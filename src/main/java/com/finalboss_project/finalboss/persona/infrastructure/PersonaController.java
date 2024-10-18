@@ -32,7 +32,7 @@ public class PersonaController {
     }
 
     @GetMapping("{personaId}") 
-    public ResponseEntity<PersonaDto> getById(@PathVariable("personaId") Long id) {
+    public ResponseEntity<PersonaDto> getById(@PathVariable("personaId") String id) {
         PersonaDto dto = service.getById(id); 
         return ResponseEntity.ok(dto);
     }
@@ -44,14 +44,14 @@ public class PersonaController {
     }
 
     @PutMapping("{personaId}") 
-    public ResponseEntity<PersonaDto> update(@PathVariable("personaId") Long id,
+    public ResponseEntity<PersonaDto> update(@PathVariable("personaId") String id,
                                                  @RequestBody PersonaDto updated) {
         PersonaDto dto = service.update(id, updated); 
         return ResponseEntity.ok(dto); 
     }
 
     @DeleteMapping("{personaId}") 
-    public ResponseEntity<String> delete(@PathVariable("personaId") Long id) {
+    public ResponseEntity<String> delete(@PathVariable("personaId") String id) {
         service.delete(id);
             return ResponseEntity.ok("¡Persona eliminado exitosamente!"); 
     }
