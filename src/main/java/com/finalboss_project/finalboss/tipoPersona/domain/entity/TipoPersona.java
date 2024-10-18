@@ -37,6 +37,7 @@ public class TipoPersona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Column(name = "id")
     private Long id;
 
@@ -52,20 +53,26 @@ public class TipoPersona {
     }
     
 =======
+=======
+    @Column(name = "id")
+>>>>>>> bef3bec3a060e28cba40e47a3fe87d6276a5582a
     private Long id;
 
-    @Column(nullable = false,unique = true)
-    @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío")
+    @Column(nullable = false)
+    @NotEmpty
     private String nombre;
 
     @OneToMany(mappedBy = "tipoPersona")
     @JsonIgnore
     private List<Persona> personas;
 
-    public TipoPersona(Long id,
-            @NotEmpty(message = "El nombre del tipo de persona no puede estar vacío") String nombre) {
+    public TipoPersona(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
+<<<<<<< HEAD
 >>>>>>> a4ab640d92cb361927e60c7ed32590240dad0d3a
+=======
+    
+>>>>>>> bef3bec3a060e28cba40e47a3fe87d6276a5582a
 }

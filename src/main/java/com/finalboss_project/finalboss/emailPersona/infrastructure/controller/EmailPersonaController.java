@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
 import com.finalboss_project.finalboss.direccion.domain.service.IDireccionService;
+=======
+>>>>>>> bef3bec3a060e28cba40e47a3fe87d6276a5582a
 import com.finalboss_project.finalboss.emailPersona.domain.service.IEmailPersonaService;
 import com.finalboss_project.finalboss.emailPersona.dto.EmailPersonaDto;
 
@@ -23,7 +26,11 @@ import jakarta.validation.Valid;
 
 @CrossOrigin("*")
 @RestController
+<<<<<<< HEAD
 @RequestMapping("/api/direccion")
+=======
+@RequestMapping("/api/emailPersona")
+>>>>>>> bef3bec3a060e28cba40e47a3fe87d6276a5582a
 public class EmailPersonaController {
 
     @Autowired
