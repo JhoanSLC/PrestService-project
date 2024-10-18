@@ -6,9 +6,9 @@ import com.finalboss_project.finalboss.persona.dto.PersonaDto;
 public interface IPersonaService {
 
     PersonaDto create(PersonaDto dto);
-    PersonaDto getById(Long id);
+    PersonaDto getById(String id);
     List<PersonaDto> getAll();
-    PersonaDto update(Long id, PersonaDto updatedDto);
-    void delete(Long id);
+    PersonaDto update(String id, PersonaDto updatedDto);
+    void delete(String id);
 
 }
