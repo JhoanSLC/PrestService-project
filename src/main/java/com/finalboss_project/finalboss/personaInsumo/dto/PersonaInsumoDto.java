@@ -1,0 +1,21 @@
+package com.finalboss_project.finalboss.personaInsumo.dto;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PersonaInsumoDto {
+    
+    @NotNull
+    private String personaId;
+
+    @NotNull
+    private Long insumoId;
+
+    @NotNull
+    private Long servicioId;
+}
