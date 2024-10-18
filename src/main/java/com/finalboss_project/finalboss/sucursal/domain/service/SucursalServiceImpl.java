@@ -11,9 +11,6 @@ import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.direccion.domain.repository.IDireccionRepository;
 import com.finalboss_project.finalboss.empresa.domain.entity.Empresa;
 import com.finalboss_project.finalboss.empresa.domain.repository.IEmpresaRepository;
-import com.finalboss_project.finalboss.pais.domain.entity.Sucursal;
-import com.finalboss_project.finalboss.pais.dto.SucursalDto;
-import com.finalboss_project.finalboss.pais.mapper.SucursalMapper;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 import com.finalboss_project.finalboss.sucursal.domain.repository.ISucursalRepo;
 import com.finalboss_project.finalboss.sucursal.dto.SucursalDto;
@@ -67,9 +64,17 @@ public class SucursalServiceImpl implements ISucursalService {
 
     @Override
     public SucursalDto update(Long id, SucursalDto updatedDto) {
+        Long direccionId = updatedDto.getDireccion();
+        Long empresaId = updatedDto.getEmpresa();
+        Direccion direccion = direccionRepo.findById(direccionId).orElseThrow(() -> new ResourceNotFoundException("Direccion con ID: "+direccionId+" no encontrado"));
+        Empresa empresa = empresaRepo.findById(empresaId).orElseThrow(() -> new ResourceNotFoundException("Empresa con ID: "+empresaId+" no encontrada"));
         Sucursal entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Sucursal con el id: " + id + " no encontrado"));
         entidad.setNombre(updatedDto.getNombre());
+        entidad.setDireccion(direccion);
+        entidad.setEmpresa(empresa);
+        entidad.setFechaCreacion(updatedDto.getFechaCreacion());
+        entidad.setNit(updatedDto.getNit());
         repository.save(entidad);
         return SucursalMapper.toDto(entidad);
     }
