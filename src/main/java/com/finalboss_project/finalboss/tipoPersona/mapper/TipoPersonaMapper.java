@@ -12,6 +12,13 @@ public class TipoPersonaMapper {
         );
     }
 
+    public static TipoPersona toEntity(TipoPersonaDto dto){
+        return new TipoPersona(
+            dto.getId(),
+            dto.getNombre()
+        );
+    }
+
 }
 
 
