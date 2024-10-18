@@ -1,45 +1,58 @@
 package com.finalboss_project.finalboss.tipoTelefono.domain.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.finalboss_project.finalboss.customExceptions.ResourceNotFoundException;
+import com.finalboss_project.finalboss.tipoTelefono.domain.entity.TipoTelefono;
 import com.finalboss_project.finalboss.tipoTelefono.domain.repository.ITipoTelefonoRepo;
 import com.finalboss_project.finalboss.tipoTelefono.dto.TipoTelefonoDto;
+import com.finalboss_project.finalboss.tipoTelefono.mapper.TipoTelefonoMapper;
 
 public class TipoTelefonoImpl implements ITipoTelefonoService  {
 
     @Autowired
     private ITipoTelefonoRepo repository;
 
-    @Override
+   @Override
     public TipoTelefonoDto create(TipoTelefonoDto dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        TipoTelefono entidad = TipoTelefonoMapper.toEntity(dto);
+        TipoTelefono entidadGuardada = repository.save(entidad);
+        return TipoTelefonoMapper.toDto(entidadGuardada);
     }
 
     @Override
     public TipoTelefonoDto getById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        TipoTelefono entidad = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("TipoTelefono con el id: " + id + " no encontrado"));
+        return TipoTelefonoMapper.toDto(entidad);
     }
+       
 
     @Override
     public List<TipoTelefonoDto> getAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+       List<TipoTelefono> entidades = repository.findAll();
+       return entidades.stream()
+                .map(TipoTelefonoMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
     public TipoTelefonoDto update(Long id, TipoTelefonoDto updatedDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        TipoTelefono entidad = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("TipoTelefono con el id: " + id + " no encontrado"));
+        entidad.setNombre(updatedDto.getNombre());
+        repository.save(entidad);
+        return TipoTelefonoMapper.toDto(entidad);
     }
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("TipoTelefono con el id: " + id + " no encontrado"));
+        repository.deleteById(id);
     }
 
     
