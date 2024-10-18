@@ -58,3 +58,5 @@ public class TipoEmpresaController {
         return ResponseEntity.ok("¡Tipo de empresa eliminado exitosamente!"); // Devuelve un mensaje de éxito con un código de estado 200.
     }
 }
+
+// TIPO EMPRESA TESTEADO EN INSOMNIA

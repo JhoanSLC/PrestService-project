@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.finalboss_project.finalboss.customExceptions.ResourceNotFoundException;
 import com.finalboss_project.finalboss.tipoTelefono.domain.entity.TipoTelefono;
@@ -11,6 +12,7 @@ import com.finalboss_project.finalboss.tipoTelefono.domain.repository.ITipoTelef
 import com.finalboss_project.finalboss.tipoTelefono.dto.TipoTelefonoDto;
 import com.finalboss_project.finalboss.tipoTelefono.mapper.TipoTelefonoMapper;
 
+@Service 
 public class TipoTelefonoImpl implements ITipoTelefonoService  {
 
     @Autowired

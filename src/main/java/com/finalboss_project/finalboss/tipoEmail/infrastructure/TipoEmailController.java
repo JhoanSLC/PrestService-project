@@ -1,6 +1,7 @@
 package com.finalboss_project.finalboss.tipoEmail.infrastructure;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.finalboss_project.finalboss.tipoEmail.domain.service.ITipoEmailService;
 import com.finalboss_project.finalboss.tipoEmail.dto.TipoEmailDto;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/pais")
+@RequestMapping("/api/tipoEmail")
 public class TipoEmailController {
 
     @Autowired

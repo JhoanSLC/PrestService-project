@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.finalboss_project.finalboss.tipoPersona.domain.service.ITipoPersonaService;
 import com.finalboss_project.finalboss.tipoPersona.dto.TipoPersonaDto;
 
@@ -57,3 +58,5 @@ public class TipoPersonaController {
     }
 
 }
+
+// TIPO PERSONA TESTEADO EN INSOMNIA
