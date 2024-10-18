@@ -55,5 +55,7 @@ public class TipoTelefonoController {
         service.delete(id); 
             return ResponseEntity.ok("¡Tipo Telefono eliminado exitosamente!"); 
     }
-
 }
+
+
+// TESTEADO Y FUNCIONANDO EN INSOMNIA //

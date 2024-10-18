@@ -18,7 +18,7 @@ import com.finalboss_project.finalboss.tipoEmail.dto.TipoEmailDto;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/pais")
+@RequestMapping("/api/tipoEmail")
 public class TipoEmailController {
 
     @Autowired
