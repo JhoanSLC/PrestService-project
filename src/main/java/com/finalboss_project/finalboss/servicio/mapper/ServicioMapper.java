@@ -13,4 +13,13 @@ public class ServicioMapper {
             servicio.getTiempoEjecucion()
         );
     }
+
+    public static Servicio toEntity(ServicioDto dto){
+        return new Servicio(
+            dto.getId(),
+            dto.getNombre(),
+            dto.getRequiereInsumo(),
+            dto.getTiempoEjecucion()
+        );
+    }
 }
