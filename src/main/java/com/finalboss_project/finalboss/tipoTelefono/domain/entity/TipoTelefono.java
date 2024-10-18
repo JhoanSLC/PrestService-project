@@ -28,11 +28,11 @@ public class TipoTelefono {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column(length = 100,unique = true)
     @NotEmpty(message = "El nombre del tipo de telefono no puede estar vacío")
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoTelefono")
+    @OneToMany(mappedBy = "tipoTelefono") 
     @JsonIgnore
     private List<TelPersona> telPersona;
 
