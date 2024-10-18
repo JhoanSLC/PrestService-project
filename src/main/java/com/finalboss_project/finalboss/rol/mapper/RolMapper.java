@@ -10,4 +10,11 @@ public class RolMapper {
             rol.getNombre()
         );
     }
+
+    public static Rol toEntity(RolDto dto){
+        return new Rol(
+            dto.getId(),
+            dto.getNombre()
+        );
+    }
 }
