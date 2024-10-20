@@ -22,6 +22,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "persona")
+@Table(name = "persona",uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"usuario","nombre","apellido"})
+})
 public class Persona {
 
     @Id
@@ -47,7 +50,13 @@ public class Persona {
     @NotEmpty(message = "El apellido de la persona no puede estar vacío")
     private String apellido;
 
-    private LocalDateTime fechaRegistro;
+    @Column(nullable = false)
+    private String usuario;
+
+    @Column(nullable = false)
+    private String contraseña;
+
+    private LocalDateTime fechaRegistro = LocalDateTime.now();
 
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
@@ -82,8 +91,7 @@ public class Persona {
     private List<Cuenta> cuentas;
 
     @ManyToOne
-    @JoinColumn(name = "sucursalId",nullable = false)
-    @NotNull(message = "El id de la sucursal no puede ser nula")
+    @JoinColumn(name = "sucursalId",nullable = true)
     private Sucursal sucursal;
 
     @ManyToOne
@@ -97,16 +105,32 @@ public class Persona {
     }
 
     public Persona(String id, @NotEmpty(message = "El nombre de la persona no puede estar vacío") String nombre,
-            @NotEmpty(message = "El apellido de la persona no puede estar vacío") String apellido,
-            LocalDateTime fechaRegistro, @NotNull(message = "El id de la sucursal no puede ser nula") Sucursal sucursal,
+            @NotEmpty(message = "El apellido de la persona no puede estar vacío") String apellido, String usuario,
+            String contraseña, LocalDateTime fechaRegistro, Sucursal sucursal,
             @NotNull(message = "El id del tipo de persona no puede ser nulo") TipoPersona tipoPersona) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
         this.fechaRegistro = fechaRegistro;
         this.sucursal = sucursal;
         this.tipoPersona = tipoPersona;
     }
+
+    public Persona(String id, @NotEmpty(message = "El nombre de la persona no puede estar vacío") String nombre,
+            @NotEmpty(message = "El apellido de la persona no puede estar vacío") String apellido, String usuario,
+            String contraseña, LocalDateTime fechaRegistro,
+            @NotNull(message = "El id del tipo de persona no puede ser nulo") TipoPersona tipoPersona) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.fechaRegistro = fechaRegistro;
+        this.tipoPersona = tipoPersona;
+    }
+
 
     
 }

@@ -30,18 +30,34 @@ public class PersonaServiceImpl implements IPersonaService {
 
     @Override
     public PersonaDto create(PersonaDto dto) {
-        Long sucursalId = dto.getSucursal();
-        Long tipoPersonaId = dto.getTipoPersona();
-        Sucursal sucursal = sucursalRepo.findById(sucursalId).orElseThrow(() -> new ResourceNotFoundException("Sucursal con ID: "+sucursalId+" no encontrado"));
+        Long sucursalId = dto.getSucursalId();
+        Persona entidad;
+        Long tipoPersonaId = dto.getTipoPersonaId();
         TipoPersona tipoPersona = tipoPersonaRepo.findById(tipoPersonaId).orElseThrow(() -> new ResourceNotFoundException("TipoPersona con ID: "+tipoPersonaId+" no encontrado"));
-        Persona entidad = new Persona(
-            dto.getId(),
-            dto.getNombre(),
-            dto.getApellido(),
-            dto.getFechaRegistro(),
-            sucursal,
-            tipoPersona
-        );
+        if (sucursalId != null){
+            Sucursal sucursal = sucursalRepo.findById(sucursalId).orElseThrow(() -> new ResourceNotFoundException("Sucursal con ID: "+sucursalId+" no encontrado"));
+            entidad = new Persona(
+                dto.getId(),
+                dto.getNombre(),
+                dto.getApellido(),
+                dto.getUsuario(),
+                dto.getContraseña(),
+                dto.getFechaRegistro(),
+                sucursal,
+                tipoPersona
+            );
+        } else {
+            entidad = new Persona(
+                dto.getId(),
+                dto.getNombre(),
+                dto.getApellido(),
+                dto.getUsuario(),
+                dto.getContraseña(),
+                dto.getFechaRegistro(),
+                tipoPersona
+            );
+        }
+        
         Persona entidadGuardada = repository.save(entidad);
         return PersonaMapper.toDto(entidadGuardada);
     }
@@ -64,8 +80,8 @@ public class PersonaServiceImpl implements IPersonaService {
 
     @Override
     public PersonaDto update(String id, PersonaDto updatedDto) {
-        Long sucursalId = updatedDto.getSucursal();
-        Long tipoPersonaId = updatedDto.getTipoPersona();
+        Long sucursalId = updatedDto.getSucursalId();
+        Long tipoPersonaId = updatedDto.getTipoPersonaId();
         Sucursal sucursal = sucursalRepo.findById(sucursalId).orElseThrow(() -> new ResourceNotFoundException("Sucursal con ID: "+sucursalId+" no encontrado"));
         TipoPersona tipoPersona = tipoPersonaRepo.findById(tipoPersonaId).orElseThrow(() -> new ResourceNotFoundException("TipoPersona con ID: "+tipoPersonaId+" no encontrado"));
         Persona entidad = repository.findById(id)
@@ -74,6 +90,8 @@ public class PersonaServiceImpl implements IPersonaService {
         entidad.setApellido(updatedDto.getApellido());
         entidad.setFechaRegistro(updatedDto.getFechaRegistro());
         entidad.setSucursal(sucursal);
+        entidad.setUsuario(updatedDto.getUsuario());
+        entidad.setContraseña(updatedDto.getContraseña());
         entidad.setTipoPersona(tipoPersona);
         repository.save(entidad);
         return PersonaMapper.toDto(entidad);

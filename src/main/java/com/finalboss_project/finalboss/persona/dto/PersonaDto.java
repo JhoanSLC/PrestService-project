@@ -15,19 +15,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Validated
 public class PersonaDto {
-     private String id;
 
-     @NotEmpty
-     private String nombre;
+    private String id;
 
-     @NotEmpty
-     private String apellido;
+    @NotEmpty
+    private String nombre;
 
-     private LocalDateTime fechaRegistro;
-    
-     @NotNull
-     private Long sucursal;
+    @NotEmpty
+    private String apellido;
 
-     @NotNull
-     private Long tipoPersona;
+    @NotEmpty
+    private String usuario;
+
+    @NotEmpty
+    private String contraseña;
+
+    private LocalDateTime fechaRegistro;
+
+    private Long sucursalId;
+
+    @NotNull(message = "El tipoPersonaId en PersonaDto no puede ser nulo")
+    private Long tipoPersonaId;
+
 }
