@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const REST_API_BASE_URL = 'http://localhost:1402/api/ordenServicio';
+const REST_API_BASE_URL = 'http://localhost:1402/api/ordenTrabajo';
 
 export const list = () => axios.get(REST_API_BASE_URL);
 
