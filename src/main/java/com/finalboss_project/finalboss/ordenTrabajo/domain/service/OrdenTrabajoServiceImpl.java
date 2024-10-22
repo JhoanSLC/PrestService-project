@@ -32,6 +32,9 @@ public class OrdenTrabajoServiceImpl implements IOrdenTrabajoService {
     public OrdenTrabajoDto create(OrdenTrabajoDto dto) {
         String personaId = dto.getEmpleadoId();
         Long ordenServicioId = dto.getOrdenServicioId();
+        if (personaId == null || ordenServicioId == null) {
+            throw new IllegalArgumentException("El ID de Persona o Orden de Servicio no debe ser nulo");
+        }
         Persona persona = personaRepo.findById(personaId).orElseThrow(() -> new ResourceNotFoundException("Persona con ID: "+personaId+" no encontrada"));
         OrdenServicio ordenServicio = ordenServicioRepo.findById(ordenServicioId).orElseThrow(() -> new ResourceNotFoundException("OrdenServicio con ID: "+ordenServicioId+" no encontrado"));
         OrdenTrabajo entidad = new OrdenTrabajo(

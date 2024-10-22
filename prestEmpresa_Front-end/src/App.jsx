@@ -5,10 +5,8 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
-import InventoryManagement from './components/InventoryManagement';
-import WorkOrderManagement from './components/WorkOrderManagement';
-import ClientManagement from './components/ClientManagement';
-import SupplierManagement from './components/SupplierManagement';
+import OrdenTrabajoCrud from './components/OrdenTrabajoCrud';
+import ClienteCrud from './components/ClienteCrud';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -23,10 +21,8 @@ export default function App() {
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard user={user} />} />
-            <Route path="/inventory" element={<InventoryManagement />} />
-            <Route path="/work-orders" element={<WorkOrderManagement />} />
-            <Route path="/clients" element={<ClientManagement />} />
-            <Route path="/suppliers" element={<SupplierManagement />} />
+            <Route path="/work-orders" element={<OrdenTrabajoCrud />} />
+            <Route path="/clients" element={<ClienteCrud />} />
           </Routes>
         </main>
       </div>

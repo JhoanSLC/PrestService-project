@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { create } from '../services/PersonaService'; // Asegúrate de importar el servicio
-import { list as listTipoPersona } from '../services/tipoPersonaService'; // Asegúrate de importar el servicio para obtener tipos de persona
+import { create } from '../services/PersonaService';
+import { list as listTipoPersona } from '../services/tipoPersonaService';
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -11,19 +11,19 @@ export default function Register() {
         usuario: '',
         contraseña: '',
         confirmarContraseña: '',
-        tipoPersonaId: '', // Cambia 'rol' a 'tipoPersonaId'
+        tipoPersonaId: '',
     });
-    const [tipoPersonas, setTipoPersonas] = useState([]); // Estado para almacenar los tipos de persona
+    const [tipoPersonas, setTipoPersonas] = useState([]);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    // Fetch tipos de persona desde la base de datos
+    
     useEffect(() => {
         const fetchTipoPersonas = async () => {
             try {
-                const response = await listTipoPersona(); // Llama al servicio para obtener tipos de persona
-                setTipoPersonas(response.data); // Asigna la lista de tipos de persona al estado
+                const response = await listTipoPersona();
+                setTipoPersonas(response.data);
             } catch (error) {
                 setError('Error al cargar los tipos de persona.');
             }
@@ -45,14 +45,13 @@ export default function Register() {
         setError('');
         setIsLoading(true);
 
-        // Basic form validation
+        
         if (formData.contraseña !== formData.confirmarContraseña) {
             setError('Las contraseñas no coinciden');
             setIsLoading(false);
             return;
         }
 
-        // Crear objeto de la persona
         const personaData = {
             id: formData.id,
             nombre: formData.name,

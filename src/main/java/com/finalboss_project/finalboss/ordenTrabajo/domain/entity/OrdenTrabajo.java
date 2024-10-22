@@ -44,10 +44,10 @@ public class OrdenTrabajo {
     private String numeroOrdenTrabajo;
 
     @Column
-    private Date fechaAsignacion;
+    private Date fechaAsignacion = Date.valueOf(LocalDate.now());;
 
     @Column
-    private Time horaAsignacion;  
+    private Time horaAsignacion = Time.valueOf(LocalTime.now());;  
 
     @ManyToOne
     @JoinColumn(name = "empleadoId",nullable = false)
@@ -63,7 +63,7 @@ public class OrdenTrabajo {
     @JsonIgnore
     private List<DetalleOrdenTrabajo> detallesOrdenTrabajo;
 
-    @OneToMany(mappedBy = "ordenTrabajo")
+    @OneToMany(mappedBy = "ordenTrabajo")   
     @JsonIgnore
     private List<AprobacionServicio> aprobacionServicios;
 
