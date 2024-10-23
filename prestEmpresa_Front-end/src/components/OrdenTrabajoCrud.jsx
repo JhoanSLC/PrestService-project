@@ -4,7 +4,7 @@ import { create, deleteEntity, list, update } from '../services/ordenTrabajoServ
 import Pagination from './Pagination';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/Table";
 
-export default function WorkOrderManagement() {
+export default function OrdenTrabajoCrud() {
     const [workOrders, setWorkOrders] = useState([]); 
     const [newOrder, setNewOrder] = useState({ 
         numeroOrdentrabajo: '', 
