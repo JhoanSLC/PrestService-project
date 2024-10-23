@@ -23,6 +23,8 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard user={user} />} />
             <Route path="/work-orders" element={<DynamicCrud tableName="ordenTrabajo"/>} />
             <Route path="/clients" element={<ClienteCrud />} />
+            <Route path="/estadoOrdenServicio" element={<DynamicCrud tableName="estadoOrdenServicio" />} />
+
           </Routes>
         </main>
       </div>

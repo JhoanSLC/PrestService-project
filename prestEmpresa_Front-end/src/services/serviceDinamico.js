@@ -11,3 +11,4 @@ export const get = (entidadUrl, id) => axios.get(`${REST_API_BASE_URL}/${entidad
 export const update = (entidadUrl,id, data) => axios.put(`${REST_API_BASE_URL}/${entidadUrl}/${id}`, data);
 
 export const deleteEntity = (entidadUrl,id) => axios.delete(`${REST_API_BASE_URL}/${entidadUrl}/${id}`);
+
