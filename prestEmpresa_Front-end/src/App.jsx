@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import Navbar from './components/NavBar';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import ClienteCrud from './components/ClienteCrud';
+import Dashboard from './components/Dashboard';
+import DynamicCrud from './components/DynamicCrud';
 import Home from './components/Home';
 import Login from './components/Login';
+import Navbar from './components/NavBar';
 import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import OrdenTrabajoCrud from './components/OrdenTrabajoCrud';
-import ClienteCrud from './components/ClienteCrud';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -21,7 +21,7 @@ export default function App() {
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard user={user} />} />
-            <Route path="/work-orders" element={<OrdenTrabajoCrud />} />
+            <Route path="/work-orders" element={<DynamicCrud tableName="ordenTrabajo"/>} />
             <Route path="/clients" element={<ClienteCrud />} />
           </Routes>
         </main>
