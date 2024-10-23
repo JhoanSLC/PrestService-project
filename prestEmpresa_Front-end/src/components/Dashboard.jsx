@@ -17,8 +17,8 @@ export default function Dashboard({ user }) {
             <Link to="/personas" className={dashboardButtonStyles}>Gestión de Personas</Link>
             <Link to="/insumos" className={dashboardButtonStyles}>Gestión de Insumos</Link>
             <Link to="/ordenServicio" className={dashboardButtonStyles}>Gestión de Órdenes de Servicio</Link>
-            <Link to="/estadoServicio" className={dashboardButtonStyles}>Gestión de Estados de Servicio</Link>
-            <Link to="/estadoServicioTrabajo" className={dashboardButtonStyles}>Gestión de Estados de Trabajo</Link>
+            <Link to="/estadoOrdenServicio" className={dashboardButtonStyles}>Gestión de Estados de Servicio</Link>
+            <Link to="/estadoOrdenTrabajo" className={dashboardButtonStyles}>Gestión de Estados de Trabajo</Link>
             <Link to="/aprobacionServicio" className={dashboardButtonStyles}>Proceso de Aprobación de Servicios</Link>
 
 
@@ -45,7 +45,7 @@ export default function Dashboard({ user }) {
         <div className="container mx-auto p-6">
             <h2 className="text-3xl font-bold mb-6 text-center">Dashboard</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {user.tipoPersona === 'administrador' && renderAdminOptions()}
+                {user.tipoPersona === 'Administrador' && renderAdminOptions()}
                 {user.tipoPersona === 'warehouse_manager' && renderWarehouseManagerOptions()}
                 {user.tipoPersona === 'cliente' && renderClientOptions()}
             </div>

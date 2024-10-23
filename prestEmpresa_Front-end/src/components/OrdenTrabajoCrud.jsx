@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/Table";
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { create, deleteEntity, list, update } from '../services/ordenTrabajoService';
 import Pagination from './Pagination';
-import { list, create, update, deleteEntity } from '../services/ordenTrabajoService';
-import { list as listEstados } from '../services/estadoOrdenTrabajoService';
-import moment from 'moment'; // Para el formateo de fechas
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/Table";
 
 export default function WorkOrderManagement() {
     const [workOrders, setWorkOrders] = useState([]); 
@@ -15,13 +14,11 @@ export default function WorkOrderManagement() {
         ordenServicioId: 0 
     });
     const [editingOrderId, setEditingOrderId] = useState(null);
-    const [estados, setEstados] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
     useEffect(() => {
         fetchWorkOrders();
-        fetchEstados();
     }, []);
 
     const fetchWorkOrders = async () => {
@@ -30,15 +27,6 @@ export default function WorkOrderManagement() {
             setWorkOrders(response.data);
         } catch (error) {
             console.error('Error al cargar las órdenes:', error);
-        }
-    };
-
-    const fetchEstados = async () => {
-        try {
-            const response = await listEstados();
-            setEstados(response.data);
-        } catch (error) {
-            console.error('Error al cargar los estados:', error);
         }
     };
 
@@ -194,7 +182,7 @@ export default function WorkOrderManagement() {
                                 <TableCell className="border-b border-gray-200 p-2">{moment(order.fechaAsignacion).format('YYYY-MM-DD')}</TableCell>
                                 <TableCell className="border-b border-gray-200 p-2">{moment(order.horaAsignacion, 'HH:mm:ss').format('HH:mm:ss')}</TableCell>
                                 <TableCell className="border-b border-gray-200 p-2">{order.empleadoId}</TableCell>
-                                <TableCell className="border-b border-gray-200 p-2">{estados.find(e => e.id === order.ordenServicioId)?.nombre || 'Desconocido'}</TableCell>
+                                <TableCell className="border-b border-gray-200 p-2">{order.ordenServicioId}</TableCell>
                                 <TableCell className="border-b border-gray-200 p-2">
                                     <button
                                         className="mr-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded"
