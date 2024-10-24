@@ -40,7 +40,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "persona",uniqueConstraints = {
     @UniqueConstraint(columnNames = {"usuario","nombre","apellido"})
 })
-public class Persona {
+public class Persona implements UserDetails {
 
     @Id
     @Column(length = 20)
@@ -135,6 +135,21 @@ public class Persona {
         this.tipoPersona = tipoPersona;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return contraseña;
+    }
+
+    @Override
+    public String getUsername() {
+        return usuario;
+    }
+    
 
     
 }
