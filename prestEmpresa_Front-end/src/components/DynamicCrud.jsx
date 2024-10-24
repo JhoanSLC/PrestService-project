@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { create, deleteEntity, list, update } from '../services/serviceDinamico';
+import { create, deleteEntity, deleteEntityEmbeddedId, list, update, updateEmbeddedId } from '../services/serviceDinamico';
 import { tableConfig } from '../services/tableConfig';
 import Pagination from './Pagination';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/Table";
@@ -10,7 +10,7 @@ export default function DynamicCrud({ tableName }) {
     const [formData, setFormData] = useState({});
     const [editingItemId, setEditingItemId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [errorMessage, setErrorMessage] = useState(''); // Estado para mensajes de error
+    const [errorMessage, setErrorMessage] = useState('');
     const itemsPerPage = 5;
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function DynamicCrud({ tableName }) {
             const response = await list(tableName);
             setItems(response.data);
         } catch (error) {
-            setErrorMessage('Error al cargar los ítems. Por favor, inténtelo de nuevo más tarde.'); // Mensaje de error
+            setErrorMessage('Error al cargar los ítems. Por favor, inténtelo de nuevo más tarde.');
             console.error('Error al cargar los ítems:', error);
         }
     };
@@ -44,15 +44,22 @@ export default function DynamicCrud({ tableName }) {
 
     const handleAddOrUpdateItem = async (e) => {
         e.preventDefault();
-        setErrorMessage(''); // Limpiar mensaje de error
+        setErrorMessage('');
+        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
+
         try {
             const formattedData = {
                 ...formData,
-                horaAsignacion: formData.horaAsignacion ? moment(formData.horaAsignacion, 'HH:mm').format('HH:mm:ss') : undefined
+                horaAsignacion: formData.horaAsignacion ? moment(formData.horaAsignacion, 'HH:mm').format('HH:mm:ss') : undefined,
             };
 
             if (editingItemId) {
-                await update(tableName, editingItemId, formattedData);
+                if (isEmbeddedId) {
+                    const { mainId, embeddedId } = editingItemId;
+                    await updateEmbeddedId(tableName, mainId, embeddedId, formattedData);
+                } else {
+                    await update(tableName, editingItemId, formattedData);
+                }
                 setEditingItemId(null);
             } else {
                 await create(tableName, formattedData);
@@ -60,7 +67,7 @@ export default function DynamicCrud({ tableName }) {
             fetchItems();
             initializeFormData();
         } catch (error) {
-            setErrorMessage('Error al guardar el ítem. Por favor, inténtelo de nuevo.'); // Mensaje de error
+            setErrorMessage('Error al guardar el ítem. Por favor, inténtelo de nuevo.');
             console.error('Error al guardar el ítem:', error);
         }
     };
@@ -74,16 +81,29 @@ export default function DynamicCrud({ tableName }) {
                                           item[field.name];
         });
         setFormData(updatedFormData);
-        setEditingItemId(item.id);
+
+        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
+        if (isEmbeddedId) {
+            setEditingItemId({ mainId: item.mainId, embeddedId: item.embeddedId });
+        } else {
+            setEditingItemId(item.id);
+        }
     };
 
     const handleDeleteItem = async (id) => {
-        setErrorMessage(''); // Limpiar mensaje de error
+        setErrorMessage('');
+        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
+
         try {
-            await deleteEntity(tableName, id);
+            if (isEmbeddedId) {
+                const { mainId, embeddedId } = id;
+                await deleteEntityEmbeddedId(tableName, mainId, embeddedId);
+            } else {
+                await deleteEntity(tableName, id);
+            }
             fetchItems();
         } catch (error) {
-            setErrorMessage('Error al eliminar el ítem. Por favor, inténtelo de nuevo.'); // Mensaje de error
+            setErrorMessage('Error al eliminar el ítem. Por favor, inténtelo de nuevo.');
             console.error('Error al eliminar el ítem:', error);
         }
     };
@@ -112,14 +132,16 @@ export default function DynamicCrud({ tableName }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {fields.map((field) => (
                         <div key={field.name} className="mb-4">
-                            <label className="block text-sm font-medium">{field.label}:</label>
+                            <label className="block text-sm font-medium">
+                                {field.label}{field.required && <span className="text-red-500"> *</span>}:
+                            </label>
                             <input
                                 className="border rounded p-2 w-full"
                                 type={field.type}
                                 name={field.name}
                                 value={formData[field.name] || ''}
                                 onChange={handleInputChange}
-                                required
+                                required={field.required}
                             />
                         </div>
                     ))}
