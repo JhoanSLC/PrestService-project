@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.aprobacionServicio.domain.entity.AprobacionServicio;
-import com.finalboss_project.finalboss.cuenta.domain.entity.Cuenta;
 import com.finalboss_project.finalboss.emailPersona.domain.entity.EmailPersona;
 import com.finalboss_project.finalboss.ordenServicio.domain.entity.OrdenServicio;
 import com.finalboss_project.finalboss.ordenTrabajo.domain.entity.OrdenTrabajo;
@@ -89,10 +88,6 @@ public class Persona implements UserDetails {
     @OneToMany(mappedBy = "persona")
     @JsonIgnore
     private List<AprobacionServicio> aprobacionServicios;
-
-    @OneToMany(mappedBy = "persona")
-    @JsonIgnore
-    private List<Cuenta> cuentas;
 
     @ManyToOne
     @JoinColumn(name = "sucursalId",nullable = true)
