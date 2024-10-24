@@ -112,6 +112,57 @@ public enum Rol {
         RolePermission.UPDATE_ONE_REGION,
         RolePermission.DISABLE_ONE_REGION,
 
+        RolePermission.READ_ALL_SERVICIO,
+        RolePermission.READ_ONE_SERVICIO,
+        RolePermission.CREATE_ONE_SERVICIO,
+        RolePermission.UPDATE_ONE_SERVICIO,
+        RolePermission.DISABLE_ONE_SERVICIO,
+
+        RolePermission.READ_ALL_SERVICIOINSUMO,
+        RolePermission.READ_ONE_SERVICIOINSUMO,
+        RolePermission.CREATE_ONE_SERVICIOINSUMO,
+        RolePermission.UPDATE_ONE_SERVICIOINSUMO,
+        RolePermission.DISABLE_ONE_SERVICIOINSUMO,
+
+        RolePermission.READ_ALL_SUCURSAL,
+        RolePermission.READ_ONE_SUCURSAL,
+        RolePermission.CREATE_ONE_SUCURSAL,
+        RolePermission.UPDATE_ONE_SUCURSAL,
+        RolePermission.DISABLE_ONE_SUCURSAL,
+
+        RolePermission.READ_ALL_TELPERSONA,
+        RolePermission.READ_ONE_TELPERSONA,
+        RolePermission.CREATE_ONE_TELPERSONA,
+        RolePermission.UPDATE_ONE_TELPERSONA,
+        RolePermission.DISABLE_ONE_TELPERSONA,
+
+        RolePermission.READ_ALL_TIPOEMAIL,
+        RolePermission.READ_ONE_TIPOEMAIL,
+        RolePermission.CREATE_ONE_TIPOEMAIL,
+        RolePermission.UPDATE_ONE_TIPOEMAIL,
+        RolePermission.DISABLE_ONE_TIPOEMAIL,
+
+        RolePermission.READ_ALL_TIPOEMPRESA,
+        RolePermission.READ_ONE_TIPOEMPRESA,
+        RolePermission.CREATE_ONE_TIPOEMPRESA,
+        RolePermission.UPDATE_ONE_TIPOEMPRESA,
+        RolePermission.DISABLE_ONE_TIPOEMPRESA,
+
+        RolePermission.READ_ALL_TIPOPERSONA,
+        RolePermission.READ_ONE_TIPOPERSONA,
+        RolePermission.CREATE_ONE_TIPOPERSONA,
+        RolePermission.UPDATE_ONE_TIPOPERSONA,
+        RolePermission.DISABLE_ONE_TIPOPERSONA,
+
+        RolePermission.READ_ALL_TIPOTELEFONO,
+        RolePermission.READ_ONE_TIPOTELEFONO,
+        RolePermission.CREATE_ONE_TIPOTELEFONO,
+        RolePermission.UPDATE_ONE_TIPOTELEFONO,
+        RolePermission.DISABLE_ONE_TIPOTELEFONO,
+
     )),
+    ROLE_CUSTOMER(Arrays.asList(
+        
+    ))
     
 }
