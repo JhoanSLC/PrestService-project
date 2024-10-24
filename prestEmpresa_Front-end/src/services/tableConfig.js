@@ -14,7 +14,8 @@ export const tableConfig = {
             { name: 'horaAsignacion', label: 'Hora de Asignación' },
             { name: 'empleadoId', label: 'ID de Empleado' },
             { name: 'ordenServicioId', label: 'ID de Orden de Servicio' }
-        ]
+        ],
+        isEmbeddedId: false
     },
     estadoOrdenServicio: {
         fields: [
@@ -23,7 +24,8 @@ export const tableConfig = {
         tableFields: [
             { name: 'id', label: 'ID', dataType: 'Long' },
             { name: 'nombre', label: 'Nombre del estado' }
-        ]
+        ],
+        isEmbeddedId: false
     },
     aprobacionServicio: {
         fields: [
@@ -34,7 +36,6 @@ export const tableConfig = {
             { name : 'solucion', label : 'Solucion', type : 'text', dataType: 'String' },
             { name : 'estadoAprobacionId', label : 'Estado de aprobacion', type : 'number', dataType: 'Long' }
 
-
         ],
         tableFields: [
             { name : 'id', label : 'ID', dataType: 'Long' },
@@ -43,7 +44,8 @@ export const tableConfig = {
             { name : 'hallazgo', label : 'Hallazgo'},
             { name : 'solucion', label : 'Solucion'},
             { name : 'estadoAprobacionId', label : 'ID del estado de aprobacion'}
-        ]
+        ],
+        isEmbeddedId: false
     },
     ciudad: {
         fields: [
@@ -55,7 +57,8 @@ export const tableConfig = {
             { name : 'id', label : 'ID', dataType: 'Long' },
             { name : 'nombre', label : 'Nombre de la ciudad' },
             { name : 'regionId', label : 'ID de la región'}
-        ]
+        ],
+        isEmbeddedId: false
     },
     detalleOrdenServicio: {
         fields: [
@@ -70,7 +73,8 @@ export const tableConfig = {
             { name : 'valorServicio', label : 'Valor del servicio' },
             { name : 'ordenServicioId', label : 'ID del Órden de Servicio' },
             { name : 'servicioId', label : 'ID del servicio'}
-        ]
+        ],
+        isEmbeddedId: false
     },
     detalleOrdenTrabajo: {
         fields: [
@@ -84,8 +88,8 @@ export const tableConfig = {
             { name : 'servicioAsignadoId', label : 'ID del servicio asignado', type : 'number', dataType: 'Long' },
             { name : 'fecha', label : 'Fecha', type : 'date', dataType: 'Date' },
             { name : 'estadoOrdenTrabajoId', label : 'ID del estado de orden de trabajo', type : 'number', dataType: 'Long' }
-
-        ]
+        ],
+        isEmbeddedId: false
     },
     direccion: {
         fields: [
@@ -105,6 +109,7 @@ export const tableConfig = {
             { name : 'ciudadId', label : 'ID de la ciudad', type : 'number', dataType: 'Long' },
             { name : 'sucursalId', label : 'ID de la sucursal', type : 'number', dataType: 'Long' }
         ],
+        isEmbeddedId: false
     },
     aprobacionServicio: {
         fields: [
@@ -118,6 +123,7 @@ export const tableConfig = {
             { name : 'personaId', label : 'ID de la persona', type : 'text', dataType: 'String' },
             { name : 'tipoEmailId', label : 'ID tipo de email', type : 'number', dataType: 'Long' }
         ],
+        isEmbeddedId: false
     },
     empresa: {
         fields: [
@@ -128,7 +134,9 @@ export const tableConfig = {
         tableFields: [
             { name : 'id', label : 'ID', dataType: 'Long' },
             { name : 'nombre', label : 'Nombre de empresa', type : 'text', dataType: 'String' },
-            { name : 'tipoEmpresaId', label : 'Tipo de empresa', type : 'number', dataType: 'Long' }        ]
+            { name : 'tipoEmpresaId', label : 'Tipo de empresa', type : 'number', dataType: 'Long' }     
+        ],
+        isEmbeddedId: false
     },
     empresaServicio: {
         fields: [
@@ -136,8 +144,10 @@ export const tableConfig = {
         ],
         tableFields: [
             { name : 'id', label : 'ID', dataType: 'Long' },
-        ]
+        ],
+        isEmbeddedId: true
     }
+    
 
 };
 

@@ -12,14 +12,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -43,15 +43,11 @@ public class DetalleOrdenTrabajo {
     private Servicio servicio;
 
     @Column
-    private LocalDateTime fecha;
+    private Date fecha = Date.valueOf(LocalDate.now());
 
     @ManyToOne
     @JoinColumn(name = "estadoOrdenTrabajoId",nullable = false)
     @NotNull
     private EstadoOrdenTrabajo estadoOrdenTrabajo;
 
-    @PrePersist
-    protected void onCreate(){
-        fecha = LocalDateTime.now();
-    }
 }

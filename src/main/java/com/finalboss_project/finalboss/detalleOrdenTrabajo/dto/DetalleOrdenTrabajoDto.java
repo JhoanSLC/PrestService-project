@@ -1,6 +1,6 @@
 package com.finalboss_project.finalboss.detalleOrdenTrabajo.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -23,7 +23,7 @@ public class DetalleOrdenTrabajoDto {
     @NotNull
     private Long servicioId;
 
-    private LocalDateTime fecha;
+    private Date fecha;
 
     @NotNull
     private Long estadoOrdenTrabajoId;
