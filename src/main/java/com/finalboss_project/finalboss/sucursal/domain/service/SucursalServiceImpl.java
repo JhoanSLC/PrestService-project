@@ -30,8 +30,8 @@ public class SucursalServiceImpl implements ISucursalService {
 
     @Override
     public SucursalDto create(SucursalDto dto) {
-        Long direccionId = dto.getDireccion();
-        Long empresaId = dto.getEmpresa();
+        Long direccionId = dto.getDireccionId();
+        Long empresaId = dto.getEmpresaId();
         Direccion direccion = direccionRepo.findById(direccionId).orElseThrow(() -> new ResourceNotFoundException("Direccion con ID: "+direccionId+" no encontrado"));
         Empresa empresa = empresaRepo.findById(empresaId).orElseThrow(() -> new ResourceNotFoundException("Empresa con ID: "+empresaId+" no encontrada"));
         Sucursal entidad = new Sucursal(
@@ -64,8 +64,8 @@ public class SucursalServiceImpl implements ISucursalService {
 
     @Override
     public SucursalDto update(Long id, SucursalDto updatedDto) {
-        Long direccionId = updatedDto.getDireccion();
-        Long empresaId = updatedDto.getEmpresa();
+        Long direccionId = updatedDto.getDireccionId();
+        Long empresaId = updatedDto.getEmpresaId();
         Direccion direccion = direccionRepo.findById(direccionId).orElseThrow(() -> new ResourceNotFoundException("Direccion con ID: "+direccionId+" no encontrado"));
         Empresa empresa = empresaRepo.findById(empresaId).orElseThrow(() -> new ResourceNotFoundException("Empresa con ID: "+empresaId+" no encontrada"));
         Sucursal entidad = repository.findById(id)

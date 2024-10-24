@@ -27,10 +27,10 @@ public class SucursalDto {
     private Date fechaCreacion;
 
     @NotNull
-    private Long direccion;
+    private Long direccionId;
 
     @NotNull
-    private Long empresa;
+    private Long empresaId;
 
 
 }
