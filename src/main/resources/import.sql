@@ -9,11 +9,11 @@ INSERT INTO tipoPersona (nombre) VALUES ('Jefe de marketing');
 INSERT INTO tipoPersona (nombre) VALUES ('Jefe de compras');
 INSERT INTO tipoPersona (nombre) VALUES ('Profesional de servicios');
 
-INSERT INTO tipoEmpresa (descripcion) VALUES ('Pequeña');
-INSERT INTO tipoEmpresa (descripcion) VALUES ('Mediana');
-INSERT INTO tipoEmpresa (descripcion) VALUES ('Grande');
-INSERT INTO tipoEmpresa (descripcion) VALUES ('Multinacional');
-INSERT INTO tipoEmpresa (descripcion) VALUES ('Startup');
+INSERT INTO tipoEmpresa (nombre) VALUES ('Pequeña');
+INSERT INTO tipoEmpresa (nombre) VALUES ('Mediana');
+INSERT INTO tipoEmpresa (nombre) VALUES ('Grande');
+INSERT INTO tipoEmpresa (nombre) VALUES ('Multinacional');
+INSERT INTO tipoEmpresa (nombre) VALUES ('Startup');
 
 INSERT INTO tipoTelefono (nombre) VALUES ('Móvil');
 INSERT INTO tipoTelefono (nombre) VALUES ('Fijo');

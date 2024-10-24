@@ -30,8 +30,8 @@ public class TelPersonaServiceImpl implements ITelPersonaService{
 
     @Override
     public TelPersonaDto create(TelPersonaDto dto) {
-        Long tipoTelefonoId = dto.getTipoTelefono();
-        String personaId = dto.getPersona();
+        Long tipoTelefonoId = dto.getTipoTelefonoId();
+        String personaId = dto.getPersonaId();
         Persona persona = personaRepo.findById(personaId).orElseThrow(() -> new ResourceNotFoundException("Persona con ID: "+personaId+" no encontrada"));
         TipoTelefono tipoTelefono = tipoTelefonoRepo.findById(tipoTelefonoId).orElseThrow(() -> new ResourceNotFoundException("TipoTelefono con ID: "+tipoTelefonoId+" no encontrado"));
         TelPersona entidad = new TelPersona(
@@ -64,8 +64,8 @@ public class TelPersonaServiceImpl implements ITelPersonaService{
     public TelPersonaDto update(Long id, TelPersonaDto updatedDto) {
         TelPersona entidad = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("TelPersona con el id: " + id + " no encontrado"));
-        Long tipoTelefonoId = updatedDto.getTipoTelefono();
-        String personaId = updatedDto.getPersona();
+        Long tipoTelefonoId = updatedDto.getTipoTelefonoId();
+        String personaId = updatedDto.getPersonaId();
         Persona persona = personaRepo.findById(personaId).orElseThrow(() -> new ResourceNotFoundException("Persona con ID: "+personaId+" no encontrada"));
         TipoTelefono tipoTelefono = tipoTelefonoRepo.findById(tipoTelefonoId).orElseThrow(() -> new ResourceNotFoundException("TipoTelefono con ID: "+tipoTelefonoId+" no encontrado"));
         entidad.setNumero(updatedDto.getNumero());

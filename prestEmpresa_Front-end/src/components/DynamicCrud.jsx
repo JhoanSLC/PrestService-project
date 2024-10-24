@@ -1,9 +1,10 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { create, deleteEntity, deleteEntityEmbeddedId, list, update, updateEmbeddedId } from '../services/serviceDinamico';
+import { create, deleteEntity, list, update } from '../services/serviceDinamico';
 import { tableConfig } from '../services/tableConfig';
 import Pagination from './Pagination';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/Table";
+import DynamicSelect from './DynamicSelect';
 
 export default function DynamicCrud({ tableName }) {
     const [items, setItems] = useState([]);
@@ -37,29 +38,21 @@ export default function DynamicCrud({ tableName }) {
         setFormData(initialData);
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    const handleInputChange = (name, value) => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleAddOrUpdateItem = async (e) => {
         e.preventDefault();
         setErrorMessage('');
-        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
-
         try {
             const formattedData = {
                 ...formData,
-                horaAsignacion: formData.horaAsignacion ? moment(formData.horaAsignacion, 'HH:mm').format('HH:mm:ss') : undefined,
+                horaAsignacion: formData.horaAsignacion ? moment(formData.horaAsignacion, 'HH:mm').format('HH:mm:ss') : undefined
             };
 
             if (editingItemId) {
-                if (isEmbeddedId) {
-                    const { mainId, embeddedId } = editingItemId;
-                    await updateEmbeddedId(tableName, mainId, embeddedId, formattedData);
-                } else {
-                    await update(tableName, editingItemId, formattedData);
-                }
+                await update(tableName, editingItemId, formattedData);
                 setEditingItemId(null);
             } else {
                 await create(tableName, formattedData);
@@ -81,26 +74,13 @@ export default function DynamicCrud({ tableName }) {
                                           item[field.name];
         });
         setFormData(updatedFormData);
-
-        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
-        if (isEmbeddedId) {
-            setEditingItemId({ mainId: item.mainId, embeddedId: item.embeddedId });
-        } else {
-            setEditingItemId(item.id);
-        }
+        setEditingItemId(item.id);
     };
 
     const handleDeleteItem = async (id) => {
         setErrorMessage('');
-        const isEmbeddedId = tableConfig[tableName]?.isEmbeddedId;
-
         try {
-            if (isEmbeddedId) {
-                const { mainId, embeddedId } = id;
-                await deleteEntityEmbeddedId(tableName, mainId, embeddedId);
-            } else {
-                await deleteEntity(tableName, id);
-            }
+            await deleteEntity(tableName, id);
             fetchItems();
         } catch (error) {
             setErrorMessage('Error al eliminar el ítem. Por favor, inténtelo de nuevo.');
@@ -132,17 +112,22 @@ export default function DynamicCrud({ tableName }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {fields.map((field) => (
                         <div key={field.name} className="mb-4">
-                            <label className="block text-sm font-medium">
-                                {field.label}{field.required && <span className="text-red-500"> *</span>}:
-                            </label>
-                            <input
-                                className="border rounded p-2 w-full"
-                                type={field.type}
-                                name={field.name}
-                                value={formData[field.name] || ''}
-                                onChange={handleInputChange}
-                                required={field.required}
-                            />
+                            <label className="block text-sm font-medium">{field.label}:</label>
+                            {field.type === 'select' ? (
+                                <DynamicSelect 
+                                    tableName={field.referencedTable}
+                                    onChange={(value) => handleInputChange(field.name, value)}
+                                />
+                            ) : (
+                                <input
+                                    className="border rounded p-2 w-full"
+                                    type={field.type}
+                                    name={field.name}
+                                    value={formData[field.name] || ''}
+                                    onChange={(e) => handleInputChange(field.name, e.target.value)}
+                                    required
+                                />
+                            )}
                         </div>
                     ))}
                     <div className="flex items-center md:col-span-2">

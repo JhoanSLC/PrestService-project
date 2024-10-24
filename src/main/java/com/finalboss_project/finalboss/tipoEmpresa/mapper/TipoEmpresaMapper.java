@@ -25,14 +25,14 @@ public class TipoEmpresaMapper {
     public static TipoEmpresaDto mapToTipoEmpresaDto(TipoEmpresa entidad){
         return new TipoEmpresaDto(
             entidad.getId(),
-            entidad.getDescripcion()
+            entidad.getNombre()
         );
     }
 
     public static TipoEmpresa mapToTipoEmpresa(TipoEmpresaDto dto){
         return new TipoEmpresa(
             dto.getId(),
-            dto.getDescripcion()
+            dto.getNombre()
         );
     }
 

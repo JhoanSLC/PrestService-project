@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class TipoEmpresaDto {
 
     private Long id;
-    private String descripcion;
+    private String nombre;
 
     /**
  * DTO (Data Transfer Object) para la entidad TipoEmpresa.

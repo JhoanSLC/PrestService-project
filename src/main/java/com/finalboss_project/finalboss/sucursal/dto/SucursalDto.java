@@ -1,6 +1,6 @@
 package com.finalboss_project.finalboss.sucursal.dto;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Validated
 public class SucursalDto {
+    
     private Long id;
 
     @NotEmpty
@@ -23,7 +24,7 @@ public class SucursalDto {
     @NotEmpty
     private String nit;
 
-    private LocalDateTime fechaCreacion;
+    private Date fechaCreacion;
 
     @NotNull
     private Long direccion;

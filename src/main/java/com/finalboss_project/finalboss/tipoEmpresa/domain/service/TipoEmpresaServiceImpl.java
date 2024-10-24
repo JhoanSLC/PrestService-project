@@ -63,7 +63,7 @@ public class TipoEmpresaServiceImpl implements ITipoEmpresaService {
             .orElseThrow(() -> new ResourceNotFoundException("Tipo de empresa con id: " + id + " no encontrado"));
         
         // Actualiza la descripción de la entidad
-        entidad.setDescripcion(updatedDto.getDescripcion());
+        entidad.setNombre(updatedDto.getNombre());
         
         // Guarda la entidad actualizada en la base de datos
         TipoEmpresa updatedObj = repository.save(entidad);

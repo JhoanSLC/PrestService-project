@@ -13,8 +13,6 @@ import com.finalboss_project.finalboss.direccion.domain.entity.Direccion;
 import com.finalboss_project.finalboss.direccion.domain.repository.IDireccionRepository;
 import com.finalboss_project.finalboss.direccion.dto.DireccionDto;
 import com.finalboss_project.finalboss.direccion.mapper.DireccionMapper;
-import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
-import com.finalboss_project.finalboss.sucursal.domain.repository.ISucursalRepo;
 
 @Service
 public class DireccionServiceImpl implements IDireccionService{
@@ -25,13 +23,10 @@ public class DireccionServiceImpl implements IDireccionService{
     @Autowired
     private ICiudadRepository ciudadRepo;
 
-    @Autowired
-    private ISucursalRepo sucursalRepo;
 
     @Override
     public DireccionDto create(DireccionDto dto) {
         Ciudad ciudad = ciudadRepo.findById(dto.getCiudadId()).orElseThrow(() -> new ResourceNotFoundException("Ciudad con el ID: "+dto.getCiudadId()+" no encontrado"));
-        Sucursal sucursal = sucursalRepo.findById(dto.getSucursalId()).orElseThrow(() -> new ResourceNotFoundException("Sucursal con el ID: "+dto.getSucursalId()+" no encontrado"));
 
         Direccion entidad = new Direccion(
             dto.getId(),
@@ -39,8 +34,7 @@ public class DireccionServiceImpl implements IDireccionService{
             dto.getCarrera(),
             dto.getDescripcion(),
             dto.getBarrio(),
-            ciudad,
-            sucursal
+            ciudad
         );
         Direccion entidadGuardada = repo.save(entidad);
         return DireccionMapper.toDto(entidadGuardada);
@@ -71,13 +65,11 @@ public class DireccionServiceImpl implements IDireccionService{
     public DireccionDto update(Long id, DireccionDto updatedDto) {
         Direccion entidad = repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Direccion con ID: "+id+" no encontrada"));
         Ciudad ciudad = ciudadRepo.findById(updatedDto.getCiudadId()).orElseThrow(() -> new ResourceNotFoundException("Ciudad con el ID: "+updatedDto.getCiudadId()+" no encontrado"));
-        Sucursal sucursal = sucursalRepo.findById(updatedDto.getSucursalId()).orElseThrow(() -> new ResourceNotFoundException("Sucursal con el ID: "+updatedDto.getSucursalId()+" no encontrado"));
         entidad.setBarrio(updatedDto.getBarrio());
         entidad.setCalle(updatedDto.getCalle());
         entidad.setCarrera(updatedDto.getCarrera());
         entidad.setCiudad(ciudad);
         entidad.setDescripcion(updatedDto.getDescripcion());
-        entidad.setSucursal(sucursal);
         repo.save(entidad);
         return DireccionMapper.toDto(entidad);
     }

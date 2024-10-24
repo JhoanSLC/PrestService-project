@@ -30,9 +30,4 @@ public class DireccionDto {
     @NotNull(message = "El id de ciudad en direccionDto no puede ser nulo")
     private Long ciudadId;
 
-    @NotNull(message = "El id de sucursal en direccionDto no puede ser nulo")
-    private Long sucursalId;
-
-
-
 }

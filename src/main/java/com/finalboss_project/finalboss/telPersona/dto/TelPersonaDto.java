@@ -20,8 +20,8 @@ public class TelPersonaDto {
     private Long numero;
 
     @NotNull
-    private Long tipoTelefono;
+    private Long tipoTelefonoId;
 
     @NotEmpty
-    private String persona;
+    private String personaId;
 }

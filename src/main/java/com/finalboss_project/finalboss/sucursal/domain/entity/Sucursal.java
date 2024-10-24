@@ -1,6 +1,7 @@
 package com.finalboss_project.finalboss.sucursal.domain.entity;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,8 +17,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -44,9 +43,9 @@ public class Sucursal {
     @NotEmpty(message = "El NIT de la empresa no puede estar vacío")
     private String nit;
 
-    private LocalDateTime fechaCreacion;
+    private Date fechaCreacion = Date.valueOf(LocalDate.now());
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "direccionId", nullable = false)
     @NotNull(message = "El ID de la dirección no puede ser nulo")
     private Direccion direccion;
@@ -61,7 +60,7 @@ public class Sucursal {
     private List<Persona> personas;
 
     public Sucursal(Long id, @NotEmpty(message = "El nombre de la surcursal no puede estar vacío") String nombre,
-            @NotEmpty(message = "El NIT de la empresa no puede estar vacío") String nit, LocalDateTime fechaCreacion,
+            @NotEmpty(message = "El NIT de la empresa no puede estar vacío") String nit, Date fechaCreacion,
             @NotNull(message = "El ID de la dirección no puede ser nulo") Direccion direccion,
             @NotNull(message = "El ID de la empresa no puede ser nulo") Empresa empresa) {
         this.id = id;
@@ -72,9 +71,6 @@ public class Sucursal {
         this.empresa = empresa;
     }
 
-    @PrePersist
-    public void beforeInsert(){
-        LocalDateTime now = LocalDateTime.now();
-        this.fechaCreacion = now;
-    }
+ 
+   
 }

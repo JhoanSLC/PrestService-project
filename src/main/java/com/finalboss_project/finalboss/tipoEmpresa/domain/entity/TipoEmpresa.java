@@ -36,7 +36,7 @@ public class TipoEmpresa {
 
     @Column(nullable = false)
     @NotEmpty(message = "La descripción del tipo de empresa no puede estar vacía")
-    private String descripcion;
+    private String nombre;
 
     @OneToMany(mappedBy = "tipoEmpresa")
     @JsonIgnore
@@ -45,6 +45,6 @@ public class TipoEmpresa {
     public TipoEmpresa(Long id,
             @NotEmpty(message = "La descripción del tipo de empresa no puede estar vacía") String descripcion) {
         this.id = id;
-        this.descripcion = descripcion;
+        this.nombre = descripcion;
     }
 }

@@ -50,7 +50,7 @@ export const tableConfig = {
     ciudad: {
         fields: [
             { name : 'nombre', label : 'Nombre de la ciudad', type : 'text', dataType: 'String' , required : true },
-            { name : 'regionId', label : 'ID de la región', type : 'select', dataType: 'Long' , required : true }
+            { name : 'regionId', label : 'ID de la región', type : 'select', dataType: 'Long' , required : true, referencedTable : 'region' }
 
         ],
         tableFields: [
@@ -97,8 +97,8 @@ export const tableConfig = {
             { name : 'carrera', label : 'Carrera', type : 'text', dataType: 'String' , required : true },
             { name : 'descripcion', label : 'Descripcion', type : 'text', dataType: 'String', required : false },
             { name : 'barrio', label : 'Barrio', type : 'text', dataType: 'String' , required : true },
-            { name : 'ciudadId', label : 'ID de la ciudad', type : 'select', dataType: 'Long' , required : true },
-            { name : 'sucursalId', label : 'ID de la sucursal', type : 'select', dataType: 'Long' , required : true }
+            { name : 'ciudadId', label : 'Ciudad', type : 'select', dataType: 'Long' , required : true, referencedTable : 'ciudad' },
+            { name : 'sucursalId', label : 'Sucursal', type : 'select', dataType: 'Long' , required : true, referencedTable : 'sucursal' }
         ],
         tableFields: [
             { name : 'id', label : 'ID', dataType: 'Long' },
@@ -118,7 +118,7 @@ export const tableConfig = {
             { name : 'tipoEmailId', label : 'Tipo de email', type : 'select', dataType: 'Long' , required : true }
         ],
         tableFields: [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'email', label : 'Email', type : 'email', dataType: 'String' },
             { name : 'personaId', label : 'ID de la persona', type : 'text', dataType: 'String' },
             { name : 'tipoEmailId', label : 'ID tipo de email', type : 'select', dataType: 'Long' }
@@ -146,8 +146,8 @@ export const tableConfig = {
         ],
         tableFields: [
             { name: 'valorServicio', label: 'Valor del Servicio' },
-            { name: 'sucursalId', label: 'ID de Sucursal' },
-            { name: 'servicioId', label: 'ID de Servicio' }
+            { name: 'sucursalId', label: 'ID de Sucursal', dataType : 'Long' },
+            { name: 'servicioId', label: 'ID de Servicio', dataType : 'Long' }
         ],
         isEmbeddedId: true
     },
@@ -156,7 +156,7 @@ export const tableConfig = {
             { name : 'nombre', label : 'Nombre del estado', type : 'text', dataType : 'String' , required : true}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'nombre', label : 'Nombre del estado'}
         ],
         isEmbeddedId: false
@@ -166,7 +166,7 @@ export const tableConfig = {
             { name : 'nombre', label : 'Nombre del estado', type : 'text', dataType : 'String' , required : true},
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'nombre', label : 'Nombre el estado'}
 
         ],
@@ -179,7 +179,7 @@ export const tableConfig = {
             { name : 'precioUnitario', label : 'Precio unitario', type : 'number', dataType : 'Double' , required : true}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'codigoInterno', label : 'Código interno', type : 'text', dataType : 'String'},
             { name : 'nombre', label : 'Nombre del insumo', type : 'text', dataType : 'String'},
             { name : 'precioUnitario', label : 'Precio unitario', type : 'number', dataType : 'Double'}
@@ -194,7 +194,7 @@ export const tableConfig = {
             { name : 'estadoOrdenServicioId', label : 'ID del estado de la órden', type : 'select', dataType : 'Long' , required : true}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'fechaOrden', label : 'Fecha de la órden', type : 'date', dataType : 'Date'},
             { name : 'clienteId', label : 'ID del cliente', type : 'text', dataType : 'String'},
             { name : 'empleadoId', label : 'ID del empleado', type : 'text', dataType : 'String'},
@@ -207,7 +207,7 @@ export const tableConfig = {
             { name : 'nombre', label : 'Nombre del país', type : 'text', dataType : 'String' , required : true}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'nombre', label : 'Nombre del país', type : 'text', dataType : 'String'}
         ],
         isEmbeddedId: false
@@ -223,7 +223,7 @@ export const tableConfig = {
             { name : 'tipoPersonaId', label : 'Tipo de persona', type : 'select', dataType : 'select' , required : true}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'nombre', label : 'Nombre/s', type : 'text', dataType : 'String'},
             { name : 'apellido', label : 'Apellido/s', type : 'text', dataType : 'String'},
             { name : 'usuario', label : 'Usuario', type : 'text', dataType : 'String'},
@@ -241,28 +241,136 @@ export const tableConfig = {
             { name : 'personaId', label : 'ID de la persona', type : 'number', dataType : 'Long', required : true }
         ],
         tableFields : [
-            { name : 'insumoId', label : 'ID del insumo'},
+            { name : 'insumoId', label : 'ID del insumo', dataType : 'Long'},
             { name : 'servicioId', label : 'ID del servicio'},
-            { name : 'personaId', label : 'ID de la persona'}
+            { name : 'personaId', label : 'ID de la persona', dataType : 'Long'}
         ],
         isEmbeddedId: true
     },
     region : {
         fields : [
             { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true },
-            { name : 'paisId', label : 'País', type : 'select', dataType : 'Long', required : true}
+            { name : 'paisId', label : 'País', type : 'select', dataType : 'Long', required : true, referencedTable : 'pais'}
         ],
         tableFields : [
-            { name : 'id', label : 'ID'},
+            { name : 'id', label : 'ID', dataType : 'Long'},
             { name : 'nombre', label : 'Nombre'},
             { name : 'paisId', label : 'País'}
         ],
         isEmbeddedId: false
+    },
+    servicio : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true },
+            { name : 'requiereInsumo', label : '¿Requiere insumo?', type : 'select', dataType : 'Boolean', required : true },
+            { name : 'tiempoEjecucion', label : 'Tiempo de ejecucion', type : 'time', dataType : 'Time', required : false }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'nombre', label : 'Nombre'},
+            { name : 'requiereInsumo', label : '¿Requiere insumo?' },
+            { name : 'tiempoEjecucion', label : 'Tiempo de ejecucion' }
+        ],
+        isEmbeddedId : false
+    },
+    servicioInsumo : {
+        fields : [
+            { name : 'valorUnitario', label : 'Valor unitario', type : 'number', dataType : 'Double', required : true },
+            { name : 'stock', label : 'Stock', type : 'number', dataType : 'Integer', required : false },
+            { name : 'stockMin', label : 'Stock minimo', type : 'number', dataType : 'Integer', required : false },
+            { name : 'stockMax', label : 'Stock máximo', type : 'number', dataType : 'Integer', required : false },
+            { name : 'insumoId', label : 'ID del insumo', type : 'number', dataType : 'Long', required : true },
+            { name : 'servicioId', label : 'ID del servicio', type : 'number', dataType : 'Long', required : true },
+
+
+        ],
+        tableFields : [
+            { name : 'valorUnitario', label : 'Valor unitario' },
+            { name : 'stock', label : 'Stock' },
+            { name : 'stockMin', label : 'Stock minimo' },
+            { name : 'stockMax', label : 'Stock máximo' },
+            { name : 'insumoId', label : 'ID del insumo', dataType : 'Long' },
+            { name : 'servicioId', label : 'ID del servicio', dataType : 'Long' },
+        ],
+        isEmbeddedId : true
+    },
+    sucursal : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true },
+            { name : 'nit', label : 'NIT', type : 'text', dataType : 'String', required : true },
+            { name : 'fechaCreacion', label : 'Fecha de creación', type : 'date', dataType : 'Date', required : false },
+            { name : 'direccionId', label : 'ID de la direccion', type : 'number', dataType : 'Long', required : true },
+            { name : 'empresaId', label : 'ID de la empresa', type : 'number', dataType : 'Long', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'nombre', label : 'Nombre' },
+            { name : 'nit', label : 'NIT' },
+            { name : 'fechaCreacion', label : 'Fecha de creación' },
+            { name : 'direccionId', label : 'ID de la direccion'},
+            { name : 'empresaId', label : 'ID de la empresa' }
+        ],
+        isEmbeddedId : false
+    },
+    telPersona : {
+        fields : [
+            { name : 'numero', label : 'Número de teléfono', type : 'number', dataType : 'Long', required : true },
+            { name : 'tipoTelefonoId', label : 'Tipo de teléfono', type : 'select', dataType : 'Long', required : true, referencedTable : 'tipoTelefono' },
+            { name : 'personaId', label : 'ID de la persona', type : 'text', dataType : 'String', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'numero', label : 'Número de teléfono' },
+            { name : 'tipoTelefonoId', label : 'Tipo de teléfono' },
+            { name : 'personaId', label : 'ID de la persona', dataType : 'String' }
+        ],
+        isEmbeddedId : false
+    },
+    tipoEmpresa : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'nombre', label : 'Nombre' }
+
+        ],
+        isEmbeddedId : false
+    },
+    tipoEmail : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'nombre', label : 'Nombre' }
+
+        ],
+        isEmbeddedId : false
+    },
+    tipoPersona : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : 'Long' },
+            { name : 'nombre', label : 'Nombre' }
+
+        ],
+        isEmbeddedId : false
+    },
+    tipoTelefono : {
+        fields : [
+            { name : 'nombre', label : 'Nombre', type : 'text', dataType : 'String', required : true }
+        ],
+        tableFields : [
+            { name : 'id', label : 'ID', dataType : "Long" },
+            { name : 'nombre', label : 'Nombre' }
+        ],
+        isEmbeddedId : false
     }
 
 };
-
-
 
 
 

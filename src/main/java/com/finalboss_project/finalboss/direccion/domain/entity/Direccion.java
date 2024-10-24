@@ -1,5 +1,6 @@
 package com.finalboss_project.finalboss.direccion.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.finalboss_project.finalboss.ciudad.domain.entity.Ciudad;
 import com.finalboss_project.finalboss.sucursal.domain.entity.Sucursal;
 
@@ -10,13 +11,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -49,9 +52,9 @@ public class Direccion {
     @NotNull(message = "El id de la ciudad para la dirección no puede ser nula")
     private Ciudad ciudad;
 
-    @OneToOne(mappedBy = "direccion")
-    @JoinColumn(name = "sucursalId",nullable = false)
-    private Sucursal sucursal;
+    @OneToMany(mappedBy = "direccion")
+    @JsonIgnore
+    private List<Sucursal> sucursales;
 
     public Direccion(Long id, @NotEmpty(message = "La calle de la dirección no puede estar vacía") String calle,
             @NotEmpty(message = "La carrera de la dirección no puede estar vacía") String carrera, String descripcion,
