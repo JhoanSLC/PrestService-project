@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/NavBar';
 import Register from './components/Register';
+import Services from './components/Services';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/detalleOrdenTrabajo" element={<DynamicCrud tableName="detalleOrdenTrabajo" />} />
             <Route path="/ciudad" element={<DynamicCrud tableName="ciudad" />} />
             <Route path="/aprobacionServicio" element={<DynamicCrud tableName="aprobacionServicio" />} />
+            <Route path="/services" element={<Services />} />
           </Routes>
         </main>
       </div>

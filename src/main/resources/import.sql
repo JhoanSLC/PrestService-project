@@ -5,11 +5,7 @@ INSERT INTO tipoPersona (nombre) VALUES ('Jefe de bodega');
 INSERT INTO tipoPersona (nombre) VALUES ('Gerente');
 INSERT INTO tipoPersona (nombre) VALUES ('Jefe de inventario');
 INSERT INTO tipoPersona (nombre) VALUES ('Jefe de recursos humanos');
-INSERT INTO tipoPersona (nombre) VALUES ('Jefe de marketing');
-INSERT INTO tipoPersona (nombre) VALUES ('Jefe de compras');
 INSERT INTO tipoPersona (nombre) VALUES ('Profesional de servicios');
-INSERT INTO tipoPersona (nombre) VALUES ('Jefe de sistemas');
-INSERT INTO tipoPersona (nombre) VALUES ('Profesional');
 
 
 
@@ -164,16 +160,16 @@ INSERT INTO servicioInsumo (insumoId, servicioId, valorUnitario, stock, stockMin
 INSERT INTO servicioInsumo (insumoId, servicioId, valorUnitario, stock, stockMin, stockMax) VALUES (9, 5, 25.00, 10, 1, 5);
 INSERT INTO servicioInsumo (insumoId, servicioId, valorUnitario, stock, stockMin, stockMax) VALUES (10, 5, 1.00, 300, 20, 150);
 
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (1, 1, 1);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (1, 2, 1);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (2, 3, 2);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (2, 4, 2);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (3, 5, 3);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (3, 6, 3);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (4, 7, 4);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (4, 8, 4);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (5, 9, 5);
-INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES (5, 10, 5);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("1", 1, 1);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("1", 2, 1);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("2", 3, 2);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("2", 4, 2);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("3", 5, 3);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("3", 6, 3);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("4", 7, 4);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("4", 8, 4);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("5", 9, 5);
+INSERT INTO personaInsumo (personaId, insumoId, servicioId) VALUES ("5", 10, 5);
 
 INSERT INTO estadoOrdenServicio (nombre) VALUES ('Pendiente');
 INSERT INTO estadoOrdenServicio (nombre) VALUES ('En Progreso');
@@ -186,27 +182,27 @@ INSERT INTO estadoOrdenServicio (nombre) VALUES ('Cerrado');
 INSERT INTO estadoOrdenServicio (nombre) VALUES ('Asignado');
 INSERT INTO estadoOrdenServicio (nombre) VALUES ('En Revisión');
 
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 1, 2, 1);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 2, 3, 2);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 3, 1, 3);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 4, 2, 4);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 5, 3, 5);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 1, 1, 6);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 2, 2, 7);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 3, 1, 8);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 4, 3, 9);
-INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, 5, 2, 10);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "1", "2", 1);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "2", "3", 2);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "3", "1", 3);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "4", "2", 4);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "5", "3", 5);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "1", "1", 6);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "2", "2", 7);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "3", "1", 8);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "4", "3", 9);
+INSERT INTO ordenServicio (fechaOrden, clienteId, empleadoId, estadoOrdenServicioId) VALUES (CURRENT_DATE, "5", "2", 10);
 
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-001', 1, 1);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-002', 2, 2);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-003', 3, 3);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-004', 1, 4);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-005', 2, 5);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-006', 3, 6);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-007', 1, 7);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-008', 2, 8);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-009', 3, 9);
-INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-010', 1, 10);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-001', "1", 1);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-002', "2", 2);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-003', "3", 3);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-004', "1", 4);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-005', "2", 5);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-006', "3", 6);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-007', "1", 7);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-008', "2", 8);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-009', "3", 9);
+INSERT INTO ordenTrabajo (numeroOrdenTrabajo, empleadoId, ordenServicioId) VALUES ('OT-010', "1", 10);
 
 INSERT INTO estadoOrdenTrabajo (nombre) VALUES ('Pendiente');
 INSERT INTO estadoOrdenTrabajo (nombre) VALUES ('En Progreso');
@@ -274,13 +270,13 @@ INSERT INTO detalleOrdenServicio (valorServicio, ordenServicioId, servicioId) VA
 INSERT INTO detalleOrdenServicio (valorServicio, ordenServicioId, servicioId) VALUES (190.0, 5, 2);
 INSERT INTO detalleOrdenServicio (valorServicio, ordenServicioId, servicioId) VALUES (240.0, 5, 3);
 
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (1, 1, 1, 'Fugas detectadas', 'Reparar las juntas', 1);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (1, 2, 2, 'Ruido anómalo', 'Revisar el motor', 2);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (2, 3, 1, 'Falta de mantenimiento', 'Realizar limpieza general', 1);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (2, 1, 3, 'Fugas en el sistema', 'Sustituir mangueras', 3);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (3, 2, 4, 'Bajo rendimiento', 'Ajustar configuraciones', 1);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (3, 4, 2, 'Componente dañado', 'Reemplazar pieza', 2);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (4, 3, 5, 'Problemas eléctricos', 'Verificar conexiones', 1);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (4, 2, 1, 'Vibraciones inusuales', 'Ajustar tornillería', 3);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (5, 5, 3, 'Fugas en el sistema', 'Reemplazar válvulas', 2);
-INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (5, 4, 4, 'Fallo en el sistema', 'Sustituir el módulo de control', 1);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (1, "1", 1, 'Fugas detectadas', 'Reparar las juntas', 1);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (1, "2", 2, 'Ruido anómalo', 'Revisar el motor', 2);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (2, "3", 1, 'Falta de mantenimiento', 'Realizar limpieza general', 1);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (2, "1", 3, 'Fugas en el sistema', 'Sustituir mangueras', 3);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (3, "2", 4, 'Bajo rendimiento', 'Ajustar configuraciones', 1);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (3, "4", 2, 'Componente dañado', 'Reemplazar pieza', 2);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (4, "3", 5, 'Problemas eléctricos', 'Verificar conexiones', 1);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (4, "2", 1, 'Vibraciones inusuales', 'Ajustar tornillería', 3);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (5, "5", 3, 'Fugas en el sistema', 'Reemplazar válvulas', 2);
+INSERT INTO aprobacionServicio (ordenTrabajoId, clienteId, servicioId, hallazgo, solucion, estadoAprobacionId) VALUES (5, "4", 4, 'Fallo en el sistema', 'Sustituir el módulo de control', 1);
