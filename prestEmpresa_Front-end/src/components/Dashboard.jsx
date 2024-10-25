@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { 
   Briefcase, FileText, Phone, Users, Building, Mail, MapPin, 
   Package, Truck, Globe, Box, ClipboardList, CheckSquare, 
-  Layers, User, Flag, Tool, FileSignature, AlertTriangle, 
+  Layers, User, Flag, Wrench, FileSignature, AlertTriangle, 
   Bookmark, Home, Inbox, Map, CheckCircle, Grid
 } from 'lucide-react';
 
@@ -50,7 +50,7 @@ export default function Dashboard({ user }) {
       {renderDashboardButton("/personaInsumo", "Gestión de Persona / Insumo", <Box className="mx-auto" />)}
       {renderDashboardButton("/persona", "Gestión de Persona", <User className="mx-auto" />)}
       {renderDashboardButton("/pais", "Gestión de País", <Flag className="mx-auto" />)}
-      {renderDashboardButton("/insumo", "Gestión de Insumo", <Tool className="mx-auto" />)}
+      {renderDashboardButton("/insumo", "Gestión de Insumo", <Wrench className="mx-auto" />)} {/* Reemplazado aquí */}
       {renderDashboardButton("/ordenServicio", "Gestión de Órden de Servicio", <ClipboardList className="mx-auto" />)}
       {renderDashboardButton("/estadoOrdenTrabajo", "Gestión de Estado de Órden Trabajo", <FileSignature className="mx-auto" />)}
       {renderDashboardButton("/estadoAprobacion", "Gestión de Estado de Aprobación", <CheckSquare className="mx-auto" />)}
@@ -87,7 +87,7 @@ export default function Dashboard({ user }) {
 
   const renderJefeBodega = () => (
     <>
-      {renderDashboardButton("/insumo", "Gestión de Insumo", <Tool className="mx-auto" />)}
+      {renderDashboardButton("/insumo", "Gestión de Insumo", <Wrench className="mx-auto" />)} {/* Reemplazado aquí */}
       {renderDashboardButton("/servicioInsumo", "Gestión de Servicio / Insumo", <Package className="mx-auto" />)}
       {renderDashboardButton("/ordenServicio", "Gestión de Órden de Servicio", <ClipboardList className="mx-auto" />)}
       {renderDashboardButton("/estadoOrdenTrabajo", "Gestión de Estado de Órden Trabajo", <FileSignature className="mx-auto" />)}
@@ -98,7 +98,7 @@ export default function Dashboard({ user }) {
   const renderCliente = () => (
     <>
       {renderDashboardButton("/servicio", "Gestión de Servicio", <Truck className="mx-auto" />)}
-      {renderDashboardButton("/insumo", "Gestión de Insumo", <Tool className="mx-auto" />)}
+      {renderDashboardButton("/insumo", "Gestión de Insumo", <Wrench className="mx-auto" />)} {/* Reemplazado aquí */}
       {renderDashboardButton("/ordenServicio", "Gestión de Órden de Servicio", <ClipboardList className="mx-auto" />)}
       {renderDashboardButton("/detalleOrdenServicio", "Gestión de Detalle de Órden Servicio", <FileText className="mx-auto" />)}
     </>
