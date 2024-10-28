@@ -1,6 +1,7 @@
 package com.finalboss_project.finalboss.utils.enums;
 
-import io.jsonwebtoken.lang.Arrays;
+import java.util.Arrays;
+
 
 public enum Rol {
     ROLE_ADMINISTRATOR(Arrays.asList(
